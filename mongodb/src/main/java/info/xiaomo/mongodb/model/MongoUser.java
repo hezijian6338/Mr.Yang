@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.springframework.data.annotation.Id;
 
+import java.io.File;
+
 
 /**
  * 把今天最好的表现当作明天最新的起点．．～
@@ -61,4 +63,15 @@ public class MongoUser {
 
     @ApiModelProperty(value = "注册时间(时间戳)")
     private Long registerTime = 0L;
+
+    @ApiModelProperty(value = "存放图片")
+    private File img;
+
+    public void setImg(File img) {
+        this.img = img;
+    }
+
+    public File getImg() {
+        return img;
+    }
 }

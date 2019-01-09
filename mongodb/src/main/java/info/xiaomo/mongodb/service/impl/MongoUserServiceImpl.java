@@ -4,6 +4,7 @@ import info.xiaomo.mongodb.dao.MongoUserDao;
 import info.xiaomo.mongodb.model.MongoUser;
 import info.xiaomo.mongodb.service.MongoUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,6 +32,9 @@ public class MongoUserServiceImpl implements MongoUserService {
     public MongoUserServiceImpl(MongoUserDao dao) {
         this.dao = dao;
     }
+
+    @Autowired
+    public MongoDbFactory mongoDbFactory;
 
     @Override
     public List<MongoUser> findAll() {

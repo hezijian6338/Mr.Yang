@@ -3,8 +3,8 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>xiaomo</artifactId>
-        <groupId>info.xiaomo</groupId>
+        <artifactId>Mr.Yang</artifactId>
+        <groupId>info</groupId>
         <version>2017.2</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
