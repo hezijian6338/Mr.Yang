@@ -1,6 +1,7 @@
 package info.Mr.Yang.mongodb.service;
 
 import info.Mr.Yang.mongodb.model.Favorite;
+import info.Mr.Yang.mongodb.model.Product;
 
 import java.util.List;
 
@@ -58,5 +59,7 @@ public interface FavoriteService {
      * @return
      */
     Favorite update(Favorite Favorite);
+
+    List<Product> findProductByUser(Long user_id);
 
 }

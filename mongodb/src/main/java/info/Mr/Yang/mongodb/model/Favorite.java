@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.springframework.data.annotation.Id;
 
+import java.util.List;
+
 /**
  * @program: Shop
  * @description: 用来存放用户的收货地址
@@ -30,6 +32,29 @@ public class Favorite {
     private int user_id;
 
     @ApiModelProperty(value = "产品id关联字段")
-    private int product_id;
+    private List<String> product_id;
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setProduct_id(List<String> product_id) {
+        this.product_id = product_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public List<String> getProduct_id() {
+        return product_id;
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
 }

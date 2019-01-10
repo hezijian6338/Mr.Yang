@@ -15,7 +15,7 @@ import java.util.List;
  * @create: 2019-01-10 16:13
  **/
 
-public class userDTO {
+public class UserDTO {
 
     private int id;
 
@@ -34,12 +34,85 @@ public class userDTO {
     @ApiModelProperty(value = "售后")
     private int afterSaleTotal;
 
-    @ApiModelProperty(value = "喜爱/收藏夹表的关联id")
+    @ApiModelProperty(value = "喜爱/收藏夹表")
     private List<Favorite> favorite;
 
-    @ApiModelProperty(value = "优惠券表的关联id")
+    @ApiModelProperty(value = "优惠券表")
     private List<Coupon> coupon;
 
-    @ApiModelProperty(value = "收货地址的关联id")
+    @ApiModelProperty(value = "收货地址")
     private List<Address> addressList;
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setUnRecieveTotal(int unRecieveTotal) {
+        this.unRecieveTotal = unRecieveTotal;
+    }
+
+    public void setCoupon(List<Coupon> coupon) {
+        this.coupon = coupon;
+    }
+
+    public void setUnPayTotal(int unPayTotal) {
+        this.unPayTotal = unPayTotal;
+    }
+
+    public void setAfterSaleTotal(int afterSaleTotal) {
+        this.afterSaleTotal = afterSaleTotal;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public void setAddressList(List<Address> addressList) {
+        this.addressList = addressList;
+    }
+
+    public void setFavorite(List<Favorite> favorite) {
+        this.favorite = favorite;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public int getAfterSaleTotal() {
+        return afterSaleTotal;
+    }
+
+    public int getUnPayTotal() {
+        return unPayTotal;
+    }
+
+    public int getUnRecieveTotal() {
+        return unRecieveTotal;
+    }
+
+    public List<Address> getAddressList() {
+        return addressList;
+    }
+
+    public List<Coupon> getCoupon() {
+        return coupon;
+    }
+
+    public List<Favorite> getFavorite() {
+        return favorite;
+    }
+
 }

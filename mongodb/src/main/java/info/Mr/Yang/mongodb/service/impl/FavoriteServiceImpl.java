@@ -2,10 +2,13 @@ package info.Mr.Yang.mongodb.service.impl;
 
 import info.Mr.Yang.mongodb.dao.FavoriteDao;
 import info.Mr.Yang.mongodb.model.Favorite;
+import info.Mr.Yang.mongodb.model.Product;
 import info.Mr.Yang.mongodb.service.FavoriteService;
+import info.Mr.Yang.mongodb.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,6 +29,9 @@ import java.util.Optional;
 @Service
 public class FavoriteServiceImpl implements FavoriteService {
     private final FavoriteDao dao;
+
+    @Autowired
+    private ProductService productService;
 
     @Autowired
     public FavoriteServiceImpl(FavoriteDao dao) {
@@ -62,4 +68,14 @@ public class FavoriteServiceImpl implements FavoriteService {
     public Favorite update(Favorite Favorite) {
         return dao.save(Favorite);
     }
+
+    List<Product> findProductByUser(int user_id) {
+        Favorite favorite = dao.findByUser_id(user_id);
+        List<Product> products = new ArrayList<>();
+        for (String product_id : favorite.getProduct_id()) {
+            products.add(productService.findById(Long.parseLong(product_id)));
+        }
+        return products;
+    }
+
 }

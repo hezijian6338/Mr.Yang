@@ -14,5 +14,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface FavoriteDao extends MongoRepository<Favorite, Long> {
-
+    public Favorite findByUser_id(int user_id);
 }

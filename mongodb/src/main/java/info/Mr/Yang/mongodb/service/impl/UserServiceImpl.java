@@ -1,11 +1,14 @@
 package info.Mr.Yang.mongodb.service.impl;
 
+import info.Mr.Yang.mongodb.dao.AddressDao;
 import info.Mr.Yang.mongodb.dao.UserDao;
-import info.Mr.Yang.mongodb.model.User;
-import info.Mr.Yang.mongodb.service.UserService;
+import info.Mr.Yang.mongodb.dto.UserDTO;
+import info.Mr.Yang.mongodb.model.*;
+import info.Mr.Yang.mongodb.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,6 +29,15 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl implements UserService {
     private final UserDao dao;
+
+    @Autowired
+    private AddressService addressService;
+
+    @Autowired
+    private CouponService couponService;
+
+    @Autowired
+    private FavoriteService favoriteService;
 
     @Autowired
     public UserServiceImpl(UserDao dao) {
@@ -61,5 +73,34 @@ public class UserServiceImpl implements UserService {
     @Override
     public User update(User User) {
         return dao.save(User);
+    }
+
+    @Override
+    public UserDTO findUserById(Long id) {
+        User user = this.findById(id);
+        UserDTO userDTO = new UserDTO();
+        userDTO.setId(user.getId());
+        userDTO.setAvatar(user.getAvatar());
+        userDTO.setUnPayTotal(user.getUnPayTotal());
+        userDTO.setUnRecieveTotal(user.getUnRecieveTotal());
+        userDTO.setAfterSaleTotal(user.getAfterSaleTotal());
+        userDTO.setUserName(user.getUserName());
+        List<Address> addresses = new ArrayList<>();
+        for (String address_id : user.getAddressList_id()) {
+            Address address = addressService.findById(Long.parseLong(address_id));
+            addresses.add(address);
+        }
+        userDTO.setAddressList(addresses);
+
+        List<Coupon> coupons = new ArrayList<>();
+        for (String coupon_id : user.getCoupon_id()) {
+            Coupon coupon = couponService.findById(Long.parseLong(coupon_id));
+            coupons.add(coupon);
+        }
+        userDTO.setCoupon(coupons);
+
+
+
+        return userDTO;
     }
 }

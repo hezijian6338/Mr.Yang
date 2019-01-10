@@ -1,5 +1,6 @@
 package info.Mr.Yang.mongodb.service;
 
+import info.Mr.Yang.mongodb.dto.UserDTO;
 import info.Mr.Yang.mongodb.model.User;
 
 import java.util.List;
@@ -58,5 +59,7 @@ public interface UserService {
      * @return
      */
     User update(User User);
+
+    UserDTO findUserById(Long id);
 
 }
