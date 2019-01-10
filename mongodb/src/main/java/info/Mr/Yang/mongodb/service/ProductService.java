@@ -37,14 +37,6 @@ public interface ProductService {
     Product findById(Long id);
 
     /**
-     * 根据名字查
-     *
-     * @param ProductName
-     * @return
-     */
-    Product findByName(String ProductName);
-
-    /**
      * 添加
      *
      * @param Product

@@ -37,14 +37,6 @@ public interface AddressService {
     Address findById(Long id);
 
     /**
-     * 根据名字查
-     *
-     * @param AddressName
-     * @return
-     */
-    Address findByName(String AddressName);
-
-    /**
      * 添加
      *
      * @param Address

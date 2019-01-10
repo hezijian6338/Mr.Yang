@@ -37,14 +37,6 @@ public interface ParameterDictionaryService {
     ParameterDictionary findById(Long id);
 
     /**
-     * 根据名字查
-     *
-     * @param ParameterDictionaryName
-     * @return
-     */
-    ParameterDictionary findByName(String ParameterDictionaryName);
-
-    /**
      * 添加
      *
      * @param ParameterDictionary

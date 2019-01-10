@@ -37,14 +37,6 @@ public interface UserService {
     User findById(Long id);
 
     /**
-     * 根据名字查
-     *
-     * @param userName
-     * @return
-     */
-    User findByName(String userName);
-
-    /**
      * 添加
      *
      * @param User

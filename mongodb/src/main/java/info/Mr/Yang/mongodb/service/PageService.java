@@ -37,14 +37,6 @@ public interface PageService {
     Page findById(Long id);
 
     /**
-     * 根据名字查
-     *
-     * @param PageName
-     * @return
-     */
-    Page findByName(String PageName);
-
-    /**
      * 添加
      *
      * @param Page

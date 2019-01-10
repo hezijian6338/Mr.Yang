@@ -37,14 +37,6 @@ public interface CouponService {
     Coupon findById(Long id);
 
     /**
-     * 根据名字查
-     *
-     * @param CouponName
-     * @return
-     */
-    Coupon findByName(String CouponName);
-
-    /**
      * 添加
      *
      * @param Coupon

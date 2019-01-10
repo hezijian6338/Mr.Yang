@@ -1,10 +1,9 @@
 package info.Mr.Yang.mongodb.service.impl;
 
-import info.Mr.Yang.mongodb.dao.MongoUserDao;
-import info.Mr.Yang.mongodb.model.MongoUser;
-import info.Mr.Yang.mongodb.service.MongoUserService;
+import info.Mr.Yang.mongodb.dao.ProductDao;
+import info.Mr.Yang.mongodb.model.Product;
+import info.Mr.Yang.mongodb.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,38 +24,34 @@ import java.util.Optional;
  **/
 
 @Service
-public class MongoUserServiceImpl implements MongoUserService {
-    private final MongoUserDao dao;
+public class ProductServiceImpl implements ProductService {
+    private final ProductDao dao;
 
     @Autowired
-    public MongoUserServiceImpl(MongoUserDao dao) {
+    public ProductServiceImpl(ProductDao dao) {
         this.dao = dao;
     }
 
     @Override
-    public List<MongoUser> findAll() {
+    public List<Product> findAll() {
         return dao.findAll();
     }
 
     @Override
-    public MongoUser findById(Long id) {
-        Optional<MongoUser> optionalUser = dao.findById(id);
-        return optionalUser.orElse(null);
+    public Product findById(Long id) {
+        Optional<Product> optionalProduct = dao.findById(id);
+        return optionalProduct.orElse(null);
     }
+    
 
     @Override
-    public MongoUser findByName(String userName) {
-        return dao.findByUserName(userName);
-    }
-
-    @Override
-    public MongoUser add(MongoUser mongoUser) {
-        return dao.save(mongoUser);
+    public Product add(Product Product) {
+        return dao.save(Product);
     }
 
     @Override
     public void delete(Long id) {
-        Optional<MongoUser> optional = dao.findById(id);
+        Optional<Product> optional = dao.findById(id);
         if (!optional.isPresent()) {
             return;
         }
@@ -64,7 +59,7 @@ public class MongoUserServiceImpl implements MongoUserService {
     }
 
     @Override
-    public MongoUser update(MongoUser mongoUser) {
-        return dao.save(mongoUser);
+    public Product update(Product Product) {
+        return dao.save(Product);
     }
 }

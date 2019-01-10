@@ -1,5 +1,6 @@
 package info.Mr.Yang.mongodb.dao;
 
+import info.Mr.Yang.mongodb.model.ParameterDictionary;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,6 +12,6 @@ import org.springframework.stereotype.Repository;
  **/
 
 @Repository
-public interface ParameterDictionaryDao extends MongoRepository<ParameterDictionaryDao, Long> {
+public interface ParameterDictionaryDao extends MongoRepository<ParameterDictionary, Long> {
 
 }

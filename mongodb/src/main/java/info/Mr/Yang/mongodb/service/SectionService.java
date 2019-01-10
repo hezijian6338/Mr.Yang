@@ -37,14 +37,6 @@ public interface SectionService {
     Section findById(Long id);
 
     /**
-     * 根据名字查
-     *
-     * @param SectionName
-     * @return
-     */
-    Section findByName(String SectionName);
-
-    /**
      * 添加
      *
      * @param Section

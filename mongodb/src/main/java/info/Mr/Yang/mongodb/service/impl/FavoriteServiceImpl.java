@@ -1,10 +1,9 @@
 package info.Mr.Yang.mongodb.service.impl;
 
-import info.Mr.Yang.mongodb.dao.MongoUserDao;
-import info.Mr.Yang.mongodb.model.MongoUser;
-import info.Mr.Yang.mongodb.service.MongoUserService;
+import info.Mr.Yang.mongodb.dao.FavoriteDao;
+import info.Mr.Yang.mongodb.model.Favorite;
+import info.Mr.Yang.mongodb.service.FavoriteService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,38 +24,34 @@ import java.util.Optional;
  **/
 
 @Service
-public class MongoUserServiceImpl implements MongoUserService {
-    private final MongoUserDao dao;
+public class FavoriteServiceImpl implements FavoriteService {
+    private final FavoriteDao dao;
 
     @Autowired
-    public MongoUserServiceImpl(MongoUserDao dao) {
+    public FavoriteServiceImpl(FavoriteDao dao) {
         this.dao = dao;
     }
 
     @Override
-    public List<MongoUser> findAll() {
+    public List<Favorite> findAll() {
         return dao.findAll();
     }
 
     @Override
-    public MongoUser findById(Long id) {
-        Optional<MongoUser> optionalUser = dao.findById(id);
-        return optionalUser.orElse(null);
+    public Favorite findById(Long id) {
+        Optional<Favorite> optionalFavorite = dao.findById(id);
+        return optionalFavorite.orElse(null);
     }
+    
 
     @Override
-    public MongoUser findByName(String userName) {
-        return dao.findByUserName(userName);
-    }
-
-    @Override
-    public MongoUser add(MongoUser mongoUser) {
-        return dao.save(mongoUser);
+    public Favorite add(Favorite Favorite) {
+        return dao.save(Favorite);
     }
 
     @Override
     public void delete(Long id) {
-        Optional<MongoUser> optional = dao.findById(id);
+        Optional<Favorite> optional = dao.findById(id);
         if (!optional.isPresent()) {
             return;
         }
@@ -64,7 +59,7 @@ public class MongoUserServiceImpl implements MongoUserService {
     }
 
     @Override
-    public MongoUser update(MongoUser mongoUser) {
-        return dao.save(mongoUser);
+    public Favorite update(Favorite Favorite) {
+        return dao.save(Favorite);
     }
 }

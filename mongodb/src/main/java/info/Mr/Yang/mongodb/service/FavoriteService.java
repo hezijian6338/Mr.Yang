@@ -37,14 +37,6 @@ public interface FavoriteService {
     Favorite findById(Long id);
 
     /**
-     * 根据名字查
-     *
-     * @param FavoriteName
-     * @return
-     */
-    Favorite findByName(String FavoriteName);
-
-    /**
      * 添加
      *
      * @param Favorite
