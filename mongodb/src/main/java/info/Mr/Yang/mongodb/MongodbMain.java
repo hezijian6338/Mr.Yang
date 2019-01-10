@@ -60,7 +60,7 @@ public class MongodbMain {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("info.xiaomo.mongodb"))
+                .apis(RequestHandlerSelectors.basePackage("info.Mr.Yang.mongodb"))
                 .paths(PathSelectors.any())
                 .build();
     }
@@ -70,7 +70,7 @@ public class MongodbMain {
                 .title("Spring Boot中使用Swagger2构建RESTful APIs")
                 .description("使用mongodb构建api接口")
                 .termsOfServiceUrl("https://xiaomo.info/")
-                .contact("小莫")
+                .contact("hezijian6338")
                 .version("1.0")
                 .build();
     }

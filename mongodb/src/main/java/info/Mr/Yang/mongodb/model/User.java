@@ -32,13 +32,13 @@ public class User {
     private String avatar;
 
     @ApiModelProperty(value = "待付款")
-    private String unPayTotal;
+    private int unPayTotal;
 
     @ApiModelProperty(value = "待发货")
-    private String unRecieveTotal;
+    private int unRecieveTotal;
 
     @ApiModelProperty(value = "售后")
-    private String afterSaleTotal;
+    private int afterSaleTotal;
 
     @ApiModelProperty(value = "喜爱/收藏夹表的关联id")
     private List<String> favorite_id;
@@ -61,7 +61,7 @@ public class User {
         this.favorite_id = favorite_id;
     }
 
-    public void setAfterSaleTotal(String afterSaleTotal) {
+    public void setAfterSaleTotal(int afterSaleTotal) {
         this.afterSaleTotal = afterSaleTotal;
     }
 
@@ -73,11 +73,11 @@ public class User {
         this.addressList_id = addressList_id;
     }
 
-    public void setUnPayTotal(String unPayTotal) {
+    public void setUnPayTotal(int unPayTotal) {
         this.unPayTotal = unPayTotal;
     }
 
-    public void setUnRecieveTotal(String unRecieveTotal) {
+    public void setUnRecieveTotal(int unRecieveTotal) {
         this.unRecieveTotal = unRecieveTotal;
     }
 
@@ -105,15 +105,15 @@ public class User {
         return id;
     }
 
-    public String getAfterSaleTotal() {
+    public int getAfterSaleTotal() {
         return afterSaleTotal;
     }
 
-    public String getUnPayTotal() {
+    public int getUnPayTotal() {
         return unPayTotal;
     }
 
-    public String getUnRecieveTotal() {
+    public int getUnRecieveTotal() {
         return unRecieveTotal;
     }
 

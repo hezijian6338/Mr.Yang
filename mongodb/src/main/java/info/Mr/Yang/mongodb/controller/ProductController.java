@@ -2,8 +2,8 @@ package info.Mr.Yang.mongodb.controller;
 
 import info.Mr.Yang.core.base.Result;
 import info.Mr.Yang.core.constant.CodeConst;
-import info.Mr.Yang.mongodb.model.Section;
-import info.Mr.Yang.mongodb.service.SectionService;
+import info.Mr.Yang.mongodb.model.Product;
+import info.Mr.Yang.mongodb.service.ProductService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,21 +24,21 @@ import org.springframework.web.bind.annotation.*;
  **/
 
 @RestController
-@RequestMapping("section")
-@Api("栏目信息操作Api")
+@RequestMapping("product")
+@Api("产品信息操作Api")
 public class ProductController {
 
-    private final SectionService service;
+    private final ProductService service;
 
     @Autowired
-    public ProductController(SectionService service) {
+    public ProductController(ProductService service) {
         this.service = service;
     }
 
     @RequestMapping(value = "get/{id}", method = RequestMethod.GET)
     public Result get(@PathVariable("id") Long id) {
-        Section section = service.findById(id);
-        return new Result<>(section);
+        Product product = service.findById(id);
+        return new Result<>(product);
     }
 
     @RequestMapping(value = "findAll", method = RequestMethod.GET)
@@ -48,9 +48,9 @@ public class ProductController {
 
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public Result add(@RequestBody Section section) {
-        // section.setImg(file);
-        return new Result<>(service.add(section));
+    public Result add(@RequestBody Product product) {
+        // product.setImg(file);
+        return new Result<>(service.add(product));
     }
     
 

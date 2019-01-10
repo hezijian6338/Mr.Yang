@@ -40,7 +40,7 @@ public class Coupon {
     private String signPosition;
 
     @ApiModelProperty(value = "优惠价值数字")
-    private int coupon;
+    private String coupon;
 
     @ApiModelProperty(value = "单位")
     private String sign;
@@ -64,7 +64,7 @@ public class Coupon {
         this.condition = condition;
     }
 
-    public void setCoupon(int coupon) {
+    public void setCoupon(String coupon) {
         this.coupon = coupon;
     }
 
@@ -92,7 +92,7 @@ public class Coupon {
         return name;
     }
 
-    public int getCoupon() {
+    public String getCoupon() {
         return coupon;
     }
 
