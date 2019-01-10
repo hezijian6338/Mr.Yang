@@ -1,11 +1,11 @@
 package info.xiaomo.website.controller;
 
-import info.xiaomo.core.base.BaseController;
-import info.xiaomo.core.base.Result;
-import info.xiaomo.core.constant.CodeConst;
-import info.xiaomo.core.exception.UserNotFoundException;
-import info.xiaomo.core.untils.Md5Util;
-import info.xiaomo.core.untils.RandomUtil;
+import info.Mr.Yang.core.base.BaseController;
+import info.Mr.Yang.core.base.Result;
+import info.Mr.Yang.core.constant.CodeConst;
+import info.Mr.Yang.core.exception.UserNotFoundException;
+import info.Mr.Yang.core.untils.Md5Util;
+import info.Mr.Yang.core.untils.RandomUtil;
 import info.xiaomo.website.model.AdminModel;
 import info.xiaomo.website.service.AdminUserService;
 import io.swagger.annotations.*;

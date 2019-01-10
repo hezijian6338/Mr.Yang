@@ -1,6 +1,6 @@
 package info.xiaomo.website.dao.base;
 
-import info.xiaomo.core.base.BaseModel;
+import info.Mr.Yang.core.base.BaseModel;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 

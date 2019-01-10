@@ -1,7 +1,7 @@
 package info.xiaomo.website.model;
 
 
-import info.xiaomo.core.base.BaseModel;
+import info.Mr.Yang.core.base.BaseModel;
 import lombok.*;
 
 import javax.persistence.Column;

@@ -1,8 +1,8 @@
 package info.xiaomo.website.controller;
 
-import info.xiaomo.core.base.BaseController;
-import info.xiaomo.core.base.Result;
-import info.xiaomo.core.constant.CodeConst;
+import info.Mr.Yang.core.base.BaseController;
+import info.Mr.Yang.core.base.Result;
+import info.Mr.Yang.core.constant.CodeConst;
 import info.xiaomo.website.model.WorksModel;
 import info.xiaomo.website.service.WorksService;
 import io.swagger.annotations.Api;

@@ -1,6 +1,6 @@
 package info.xiaomo.website.service.impl;
 
-import info.xiaomo.core.exception.UserNotFoundException;
+import info.Mr.Yang.core.exception.UserNotFoundException;
 import info.xiaomo.website.dao.AdminUserDao;
 import info.xiaomo.website.model.AdminModel;
 import info.xiaomo.website.service.AdminUserService;

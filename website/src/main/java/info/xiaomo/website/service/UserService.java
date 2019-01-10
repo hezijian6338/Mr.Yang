@@ -1,7 +1,7 @@
 package info.xiaomo.website.service;
 
 
-import info.xiaomo.core.exception.UserNotFoundException;
+import info.Mr.Yang.core.exception.UserNotFoundException;
 import info.xiaomo.website.model.UserModel;
 import org.springframework.data.domain.Page;
 

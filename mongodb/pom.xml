@@ -3,18 +3,18 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>Mr.Yang</artifactId>
-        <groupId>info</groupId>
-        <version>2017.2</version>
+        <artifactId>Shop</artifactId>
+        <groupId>info.Mr.Yang</groupId>
+        <version>2019.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>mongodb</artifactId>
     <dependencies>
         <dependency>
-            <groupId>info.xiaomo</groupId>
+            <groupId>info.Mr.Yang</groupId>
             <artifactId>core</artifactId>
-            <version>2017.2</version>
+            <version>2019.1</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
