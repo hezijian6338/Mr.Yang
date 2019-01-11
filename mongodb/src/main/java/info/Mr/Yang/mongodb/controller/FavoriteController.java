@@ -3,10 +3,13 @@ package info.Mr.Yang.mongodb.controller;
 import info.Mr.Yang.core.base.Result;
 import info.Mr.Yang.core.constant.CodeConst;
 import info.Mr.Yang.mongodb.model.Favorite;
+import info.Mr.Yang.mongodb.model.Product;
 import info.Mr.Yang.mongodb.service.FavoriteService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 /**
@@ -40,6 +43,12 @@ public class FavoriteController {
         Favorite favorite = service.findById(id);
         return new Result<>(favorite);
     }
+
+//    @RequestMapping(value = "{user_id}/products", method = RequestMethod.GET)
+//    public Result getByUser(@PathVariable("user_id") Long user_id) {
+//        List<Product> favorites = service.findProductByUser(user_id);
+//        return new Result<>(favorites);
+//    }
 
     @RequestMapping(value = "findAll", method = RequestMethod.GET)
     public Result findAll() {

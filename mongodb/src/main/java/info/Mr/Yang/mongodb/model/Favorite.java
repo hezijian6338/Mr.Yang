@@ -25,12 +25,6 @@ public class Favorite {
     @Id
     private int id;
 
-    // @ApiModelProperty(value = "总页数(相当于循环显示数量,这个估计以后可以去掉)")
-    // private int totalPage;
-
-    @ApiModelProperty(value = "用户id关联字段")
-    private int user_id;
-
     @ApiModelProperty(value = "产品id关联字段")
     private List<String> product_id;
 
@@ -42,10 +36,6 @@ public class Favorite {
         this.product_id = product_id;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
-    }
-
     public int getId() {
         return id;
     }
@@ -54,7 +44,4 @@ public class Favorite {
         return product_id;
     }
 
-    public int getUser_id() {
-        return user_id;
-    }
 }

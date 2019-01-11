@@ -66,7 +66,7 @@ public class DownUtil {
         if (!output.exists()) {
             boolean res = output.mkdir();
             if (res) {
-                log.debug("{} 目录创建成功", filePath);
+                // log.debug("{} 目录创建成功", filePath);
             }
         }
 

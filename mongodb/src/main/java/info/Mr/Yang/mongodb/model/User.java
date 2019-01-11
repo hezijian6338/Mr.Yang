@@ -41,7 +41,7 @@ public class User {
     private int afterSaleTotal;
 
     @ApiModelProperty(value = "喜爱/收藏夹表的关联id")
-    private List<String> favorite_id;
+    private String favorite_id;
 
     @ApiModelProperty(value = "优惠券表的关联id")
     private List<String> coupon_id;
@@ -57,7 +57,7 @@ public class User {
         this.avatar = avatar;
     }
 
-    public void setFavorite_id(List<String> favorite_id) {
+    public void setFavorite_id(String favorite_id) {
         this.favorite_id = favorite_id;
     }
 
@@ -97,7 +97,7 @@ public class User {
         return coupon_id;
     }
 
-    public List<String> getFavorite_id() {
+    public String getFavorite_id() {
         return favorite_id;
     }
 

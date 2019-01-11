@@ -1,8 +1,7 @@
 package info.Mr.Yang.mongodb.dao;
 
+import info.Mr.Yang.mongodb.Base.BaseDao;
 import info.Mr.Yang.mongodb.model.Favorite;
-import info.Mr.Yang.mongodb.model.User;
-import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -13,6 +12,5 @@ import org.springframework.stereotype.Repository;
  **/
 
 @Repository
-public interface FavoriteDao extends MongoRepository<Favorite, Long> {
-    public Favorite findByUser_id(int user_id);
+public interface FavoriteDao extends BaseDao<Favorite, Long> {
 }

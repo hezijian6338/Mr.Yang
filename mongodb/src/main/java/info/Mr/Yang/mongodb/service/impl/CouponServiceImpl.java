@@ -6,6 +6,7 @@ import info.Mr.Yang.mongodb.service.CouponService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,7 +43,15 @@ public class CouponServiceImpl implements CouponService {
         Optional<Coupon> optionalCoupon = dao.findById(id);
         return optionalCoupon.orElse(null);
     }
-    
+
+    @Override
+    public List<Coupon> findByIds(List<String> ids) {
+        List<Coupon> coupons = new ArrayList<>();
+        for (String id : ids) {
+            coupons.add(this.findById(Long.parseLong(id)));
+        }
+        return coupons;
+    }
 
     @Override
     public Coupon add(Coupon Coupon) {

@@ -1,6 +1,7 @@
 package info.Mr.Yang.mongodb.service;
 
 import info.Mr.Yang.mongodb.dto.UserDTO;
+import info.Mr.Yang.mongodb.dto.UserIndex;
 import info.Mr.Yang.mongodb.model.User;
 
 import java.util.List;
@@ -36,6 +37,14 @@ public interface UserService {
      * @return
      */
     User findById(Long id);
+
+    /**
+     * 根据id查
+     *
+     * @param id
+     * @return UserIndex
+     */
+    UserIndex findById_UserIndex(Long id);
 
     /**
      * 添加

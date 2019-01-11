@@ -1,6 +1,7 @@
 package info.Mr.Yang.mongodb.service.impl;
 
 import info.Mr.Yang.mongodb.dao.FavoriteDao;
+import info.Mr.Yang.mongodb.dto.Favorites;
 import info.Mr.Yang.mongodb.model.Favorite;
 import info.Mr.Yang.mongodb.model.Product;
 import info.Mr.Yang.mongodb.service.FavoriteService;
@@ -48,7 +49,6 @@ public class FavoriteServiceImpl implements FavoriteService {
         Optional<Favorite> optionalFavorite = dao.findById(id);
         return optionalFavorite.orElse(null);
     }
-    
 
     @Override
     public Favorite add(Favorite Favorite) {
@@ -69,13 +69,17 @@ public class FavoriteServiceImpl implements FavoriteService {
         return dao.save(Favorite);
     }
 
-    List<Product> findProductByUser(int user_id) {
-        Favorite favorite = dao.findByUser_id(user_id);
+    @Override
+    public Favorites findProductById(Long id) {
+        Favorite favorite = this.findById(id);
+        Favorites favorites = new Favorites();
+        favorites.setId(favorite.getId());
         List<Product> products = new ArrayList<>();
-        for (String product_id : favorite.getProduct_id()) {
-            products.add(productService.findById(Long.parseLong(product_id)));
+        for (String p_id : favorite.getProduct_id()) {
+            products.add(productService.findById(Long.parseLong(p_id)));
         }
-        return products;
+        favorites.setProduct(products);
+        return favorites;
     }
 
 }

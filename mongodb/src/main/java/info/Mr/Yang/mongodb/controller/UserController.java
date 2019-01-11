@@ -2,12 +2,23 @@ package info.Mr.Yang.mongodb.controller;
 
 import info.Mr.Yang.core.base.Result;
 import info.Mr.Yang.core.constant.CodeConst;
+import info.Mr.Yang.mongodb.dto.Favorites;
+import info.Mr.Yang.mongodb.dto.UserIndex;
+import info.Mr.Yang.mongodb.model.Address;
+import info.Mr.Yang.mongodb.model.Coupon;
+import info.Mr.Yang.mongodb.model.Product;
 import info.Mr.Yang.mongodb.model.User;
+import info.Mr.Yang.mongodb.service.AddressService;
+import info.Mr.Yang.mongodb.service.CouponService;
+import info.Mr.Yang.mongodb.service.FavoriteService;
 import info.Mr.Yang.mongodb.service.UserService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.gridfs.GridFsTemplate;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 /**
@@ -32,14 +43,47 @@ public class UserController {
     private final UserService service;
 
     @Autowired
+    private FavoriteService favoriteService;
+
+    @Autowired
+    private AddressService addressService;
+
+    @Autowired
+    private CouponService couponService;
+
+    @Autowired
     public UserController(UserService service) {
         this.service = service;
     }
 
     @RequestMapping(value = "get/{id}", method = RequestMethod.GET)
     public Result get(@PathVariable("id") Long id) {
-        User user = service.findById(id);
+        // User user = service.findById(id);
+        UserIndex user = service.findById_UserIndex(id);
         return new Result<>(user);
+    }
+
+    @ApiOperation(value = "根据用户id获取收藏夹内容")
+    @RequestMapping(value = "{id}/favorites", method = RequestMethod.GET)
+    public Result getUserFavorites(@ApiParam(required = true, name = "id", value = "填写用户的id") @PathVariable("id") Long id) {
+        Favorites favorites = favoriteService.findProductById(id);
+        return new Result<>(favorites);
+    }
+
+    @ApiOperation(value = "根据用户id获取收货地址")
+    @RequestMapping(value = "{id}/addresses", method = RequestMethod.GET)
+    public Result getUserAddresses(@ApiParam(required = true, name = "id", value = "填写用户的id")@PathVariable("id") Long id) {
+        User user = service.findById(id);
+        List<Address> addresses = addressService.findByIds(user.getAddressList_id());
+        return new Result<>(addresses);
+    }
+
+    @ApiOperation(value = "根据用户id获取优惠券")
+    @RequestMapping(value = "{id}/coupons", method = RequestMethod.GET)
+    public Result getUserCoupons(@ApiParam(required = true, name = "id", value = "填写用户的id")@PathVariable("id") Long id) {
+        User user = service.findById(id);
+        List<Coupon> Coupon = couponService.findByIds(user.getCoupon_id());
+        return new Result<>(Coupon);
     }
 
     @RequestMapping(value = "findAll", method = RequestMethod.GET)

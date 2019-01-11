@@ -34,4 +34,35 @@ public class Page {
     @ApiModelProperty(value = "主页栏目管理id(暂确定,不关联主id,关联的也是唯一id)")
     private List<String> section_id;
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setBackgroundColor(String backgroundColor) {
+        this.backgroundColor = backgroundColor;
+    }
+
+    public void setSection_id(List<String> section_id) {
+        this.section_id = section_id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<String> getSection_id() {
+        return section_id;
+    }
+
+    public String getBackgroundColor() {
+        return backgroundColor;
+    }
 }

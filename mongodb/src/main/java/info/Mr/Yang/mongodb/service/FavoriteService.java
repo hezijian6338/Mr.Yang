@@ -1,5 +1,6 @@
 package info.Mr.Yang.mongodb.service;
 
+import info.Mr.Yang.mongodb.dto.Favorites;
 import info.Mr.Yang.mongodb.model.Favorite;
 import info.Mr.Yang.mongodb.model.Product;
 
@@ -37,6 +38,7 @@ public interface FavoriteService {
      */
     Favorite findById(Long id);
 
+
     /**
      * 添加
      *
@@ -60,6 +62,6 @@ public interface FavoriteService {
      */
     Favorite update(Favorite Favorite);
 
-    List<Product> findProductByUser(Long user_id);
+    Favorites findProductById(Long id);
 
 }

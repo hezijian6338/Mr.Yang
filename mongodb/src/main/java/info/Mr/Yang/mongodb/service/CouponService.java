@@ -37,6 +37,14 @@ public interface CouponService {
     Coupon findById(Long id);
 
     /**
+     * 根据ids查
+     *
+     * @param ids
+     * @return
+     */
+    List<Coupon> findByIds(List<String> ids);
+
+    /**
      * 添加
      *
      * @param Coupon

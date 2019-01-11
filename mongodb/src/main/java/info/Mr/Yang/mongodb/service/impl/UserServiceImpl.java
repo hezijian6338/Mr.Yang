@@ -3,6 +3,7 @@ package info.Mr.Yang.mongodb.service.impl;
 import info.Mr.Yang.mongodb.dao.AddressDao;
 import info.Mr.Yang.mongodb.dao.UserDao;
 import info.Mr.Yang.mongodb.dto.UserDTO;
+import info.Mr.Yang.mongodb.dto.UserIndex;
 import info.Mr.Yang.mongodb.model.*;
 import info.Mr.Yang.mongodb.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,9 +38,6 @@ public class UserServiceImpl implements UserService {
     private CouponService couponService;
 
     @Autowired
-    private FavoriteService favoriteService;
-
-    @Autowired
     public UserServiceImpl(UserDao dao) {
         this.dao = dao;
     }
@@ -55,6 +53,18 @@ public class UserServiceImpl implements UserService {
         return optionalUser.orElse(null);
     }
 
+    @Override
+    public UserIndex findById_UserIndex(Long id) {
+        User user = this.findById(id);
+        UserIndex userIndex = new UserIndex();
+        userIndex.setId(user.getId());
+        userIndex.setUserName(user.getUserName());
+        userIndex.setAvatar(user.getAvatar());
+        userIndex.setUnPayTotal(user.getUnPayTotal());
+        userIndex.setUnRecieveTotal(user.getUnRecieveTotal());
+        userIndex.setAfterSaleTotal(user.getAfterSaleTotal());
+        return userIndex;
+    }
 
     @Override
     public User add(User User) {

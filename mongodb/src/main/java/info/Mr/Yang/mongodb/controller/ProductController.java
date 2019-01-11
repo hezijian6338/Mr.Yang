@@ -1,5 +1,7 @@
 package info.Mr.Yang.mongodb.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import info.Mr.Yang.core.base.Result;
 import info.Mr.Yang.core.constant.CodeConst;
 import info.Mr.Yang.mongodb.model.Product;
@@ -42,8 +44,10 @@ public class ProductController {
     }
 
     @RequestMapping(value = "findAll", method = RequestMethod.GET)
-    public Result findAll() {
-        return new Result<>(service.findAll());
+    public Result findAll(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size) {
+        PageHelper.startPage(page, size);
+        PageInfo pageInfo = new PageInfo(service.findAll());
+        return new Result<>(pageInfo);
     }
 
 

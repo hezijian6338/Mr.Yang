@@ -6,6 +6,7 @@ import info.Mr.Yang.mongodb.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,6 +42,15 @@ public class AddressServiceImpl implements AddressService {
     public Address findById(Long id) {
         Optional<Address> optionalAddress = dao.findById(id);
         return optionalAddress.orElse(null);
+    }
+
+    @Override
+    public List<Address> findByIds(List<String> Ids) {
+        List<Address> addresses = new ArrayList<>();
+        for (String id : Ids) {
+            addresses.add(this.findById(Long.parseLong(id)));
+        }
+        return addresses;
     }
     
 

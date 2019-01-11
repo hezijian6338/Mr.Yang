@@ -1,8 +1,7 @@
 package info.Mr.Yang.mongodb.dao;
 
+import info.Mr.Yang.mongodb.Base.BaseDao;
 import info.Mr.Yang.mongodb.model.Address;
-import info.Mr.Yang.mongodb.model.User;
-import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -13,6 +12,6 @@ import org.springframework.stereotype.Repository;
  **/
 
 @Repository
-public interface AddressDao extends MongoRepository<Address, Long> {
+public interface AddressDao extends BaseDao<Address, Long> {
 
 }
