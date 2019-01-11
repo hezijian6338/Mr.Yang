@@ -30,4 +30,27 @@ public class Section {
     @ApiModelProperty(value = "栏目代码")
     private String code;
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public void setPageSectionId(int pageSectionId) {
+        this.pageSectionId = pageSectionId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getPageSectionId() {
+        return pageSectionId;
+    }
+
+    public String getCode() {
+        return code;
+    }
 }

@@ -57,6 +57,6 @@ public interface ParameterDictionaryService {
      * @param ParameterDictionary
      * @return
      */
-    ParameterDictionary update(ParameterDictionary ParameterDictionary);
+    void update(ParameterDictionary ParameterDictionary);
 
 }

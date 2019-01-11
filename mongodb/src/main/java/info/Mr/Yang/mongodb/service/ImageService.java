@@ -1,8 +1,6 @@
 package info.Mr.Yang.mongodb.service;
 
-import info.Mr.Yang.mongodb.dto.UserDTO;
-import info.Mr.Yang.mongodb.dto.UserIndex;
-import info.Mr.Yang.mongodb.model.User;
+import info.Mr.Yang.mongodb.model.Image;
 
 import java.util.List;
 
@@ -21,14 +19,14 @@ import java.util.List;
  **/
 
 
-public interface UserService {
+public interface ImageService {
 
     /**
      * 查所有
      *
      * @return
      */
-    List<User> findAll();
+    List<Image> findAll();
 
     /**
      * 根据id查
@@ -36,23 +34,15 @@ public interface UserService {
      * @param id
      * @return
      */
-    User findById(Long id);
-
-    /**
-     * 根据id查
-     *
-     * @param id
-     * @return UserIndex
-     */
-    UserIndex findById_UserIndex(Long id);
+    Image findById(Long id);
 
     /**
      * 添加
      *
-     * @param User
+     * @param image
      * @return
      */
-    User add(User User);
+    Image add(Image image);
 
     /**
      * 删除
@@ -64,11 +54,9 @@ public interface UserService {
     /**
      * 更新
      *
-     * @param User
+     * @param image
      * @return
      */
-    void update(User User);
-
-    UserDTO findUserById(Long id);
+    Image update(Image image);
 
 }

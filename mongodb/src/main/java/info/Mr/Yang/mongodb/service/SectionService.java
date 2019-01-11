@@ -57,6 +57,6 @@ public interface SectionService {
      * @param Section
      * @return
      */
-    Section update(Section Section);
+    void update(Section Section);
 
 }

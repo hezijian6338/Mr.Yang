@@ -57,6 +57,6 @@ public interface PageService {
      * @param Page
      * @return
      */
-    Page update(Page Page);
+    void update(Page Page);
 
 }

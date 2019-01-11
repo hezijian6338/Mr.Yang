@@ -82,4 +82,156 @@ public class ParameterDictionary {
     @ApiModelProperty(value = "有待研究")
     private String producttagid;
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setPageSectionId(int pageSectionId) {
+        this.pageSectionId = pageSectionId;
+    }
+
+    public void setBackgroundcolor(String backgroundcolor) {
+        this.backgroundcolor = backgroundcolor;
+    }
+
+    public void setBoxcolor(String boxcolor) {
+        this.boxcolor = boxcolor;
+    }
+
+    public void setBoxtype(String boxtype) {
+        this.boxtype = boxtype;
+    }
+
+    public void setButtonvalue(String buttonvalue) {
+        this.buttonvalue = buttonvalue;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setImagegap(int imagegap) {
+        this.imagegap = imagegap;
+    }
+
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public void setProductcategoryid(String productcategoryid) {
+        this.productcategoryid = productcategoryid;
+    }
+
+    public void setProducttagid(String producttagid) {
+        this.producttagid = producttagid;
+    }
+
+    public void setShownumber(int shownumber) {
+        this.shownumber = shownumber;
+    }
+
+    public void setShowsort(int showsort) {
+        this.showsort = showsort;
+    }
+
+    public void setShowtype(String showtype) {
+        this.showtype = showtype;
+    }
+
+    public void setSource(int source) {
+        this.source = source;
+    }
+
+    public void setTag(int tag) {
+        this.tag = tag;
+    }
+
+    public void setTextalign(String textalign) {
+        this.textalign = textalign;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getPageSectionId() {
+        return pageSectionId;
+    }
+
+    public int getImagegap() {
+        return imagegap;
+    }
+
+    public int getShownumber() {
+        return shownumber;
+    }
+
+    public int getShowsort() {
+        return showsort;
+    }
+
+    public int getSource() {
+        return source;
+    }
+
+    public int getTag() {
+        return tag;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public String getBackgroundcolor() {
+        return backgroundcolor;
+    }
+
+    public String getBoxcolor() {
+        return boxcolor;
+    }
+
+    public String getBoxtype() {
+        return boxtype;
+    }
+
+    public String getButtonvalue() {
+        return buttonvalue;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public String getKeyword() {
+        return keyword;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public String getProductcategoryid() {
+        return productcategoryid;
+    }
+
+    public String getProducttagid() {
+        return producttagid;
+    }
+
+    public String getShowtype() {
+        return showtype;
+    }
+
+    public String getTextalign() {
+        return textalign;
+    }
+
 }

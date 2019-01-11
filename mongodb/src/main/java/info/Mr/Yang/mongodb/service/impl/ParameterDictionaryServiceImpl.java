@@ -62,7 +62,7 @@ public class ParameterDictionaryServiceImpl implements ParameterDictionaryServic
     }
 
     @Override
-    public ParameterDictionary update(ParameterDictionary ParameterDictionary) {
-        return dao.save(ParameterDictionary);
+    public void update(ParameterDictionary parameterDictionary) {
+        dao.update((long)parameterDictionary.getId(), parameterDictionary);
     }
 }

@@ -59,7 +59,7 @@ public class PageServiceImpl implements PageService {
     }
 
     @Override
-    public Page update(Page Page) {
-        return dao.save(Page);
+    public void update(Page page) {
+        dao.update((long)page.getId(), page);
     }
 }

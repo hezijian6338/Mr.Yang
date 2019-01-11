@@ -1,11 +1,10 @@
 package info.Mr.Yang.mongodb.service.impl;
 
-import info.Mr.Yang.mongodb.dao.ProductDao;
-import info.Mr.Yang.mongodb.model.Product;
-import info.Mr.Yang.mongodb.service.ProductService;
+import info.Mr.Yang.mongodb.dao.ImageDao;
+import info.Mr.Yang.mongodb.model.Image;
+import info.Mr.Yang.mongodb.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -24,34 +23,34 @@ import java.util.Optional;
  **/
 
 @Service
-public class ProductServiceImpl implements ProductService {
-    private final ProductDao dao;
+public class ImageServiceImpl implements ImageService {
+    private final ImageDao dao;
 
     @Autowired
-    public ProductServiceImpl(ProductDao dao) {
+    public ImageServiceImpl(ImageDao dao) {
         this.dao = dao;
     }
 
     @Override
-    public List<Product> findAll() {
+    public List<Image> findAll() {
         return dao.findAll();
     }
 
     @Override
-    public Product findById(Long id) {
-        Optional<Product> optionalProduct = dao.findById(id);
-        return optionalProduct.orElse(null);
+    public Image findById(Long id) {
+        Optional<Image> optionalSection = dao.findById(id);
+        return optionalSection.orElse(null);
     }
 
 
     @Override
-    public Product add(Product Product) {
-        return dao.save(Product);
+    public Image add(Image Image) {
+        return dao.save(Image);
     }
 
     @Override
     public void delete(Long id) {
-        Optional<Product> optional = dao.findById(id);
+        Optional<Image> optional = dao.findById(id);
         if (!optional.isPresent()) {
             return;
         }
@@ -59,7 +58,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void update(Product product) {
-        dao.update((long)product.getId(), product);
+    public Image update(Image Image) {
+        return dao.save(Image);
     }
 }

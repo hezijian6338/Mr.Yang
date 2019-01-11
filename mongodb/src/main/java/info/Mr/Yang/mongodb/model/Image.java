@@ -38,4 +38,52 @@ public class Image {
     @ApiModelProperty(value = "图片的标题")
     private String title;
 
+    public void setPageSectionId(int pageSectionId) {
+        this.pageSectionId = pageSectionId;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public void setLinkName(String linkName) {
+        this.linkName = linkName;
+    }
+
+    public void setSrc(String src) {
+        this.src = src;
+    }
+
+    public int getPageSectionId() {
+        return pageSectionId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public String getLinkName() {
+        return linkName;
+    }
+
+    public String getSrc() {
+        return src;
+    }
+
 }

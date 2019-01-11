@@ -55,8 +55,8 @@ public class AddressServiceImpl implements AddressService {
     
 
     @Override
-    public Address add(Address Address) {
-        return dao.save(Address);
+    public Address add(Address address) {
+        return dao.save(address);
     }
 
     @Override
@@ -69,7 +69,7 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public Address update(Address Address) {
-        return dao.save(Address);
+    public void update(Address address) {
+        dao.update((long)address.getId(), address);
     }
 }

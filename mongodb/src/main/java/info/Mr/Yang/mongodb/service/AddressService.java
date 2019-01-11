@@ -47,10 +47,10 @@ public interface AddressService {
     /**
      * 添加
      *
-     * @param Address
+     * @param address
      * @return
      */
-    Address add(Address Address);
+    Address add(Address address);
 
     /**
      * 删除
@@ -62,9 +62,9 @@ public interface AddressService {
     /**
      * 更新
      *
-     * @param Address
+     * @param address
      * @return
      */
-    Address update(Address Address);
+    void update(Address address);
 
 }

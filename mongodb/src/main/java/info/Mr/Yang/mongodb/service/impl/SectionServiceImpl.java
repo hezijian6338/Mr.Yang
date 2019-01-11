@@ -59,7 +59,7 @@ public class SectionServiceImpl implements SectionService {
     }
 
     @Override
-    public Section update(Section Section) {
-        return dao.save(Section);
+    public void update(Section section) {
+        dao.update((long)section.getId(), section);
     }
 }

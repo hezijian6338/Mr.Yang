@@ -32,4 +32,36 @@ public class Product {
     @ApiModelProperty(value = "商品图片地址")
     private String imageURL;
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
 }

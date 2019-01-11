@@ -57,6 +57,6 @@ public interface ProductService {
      * @param Product
      * @return
      */
-    Product update(Product Product);
+    void update(Product Product);
 
 }
