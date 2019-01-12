@@ -5,6 +5,8 @@ import info.Mr.Yang.mongodb.model.Image;
 import info.Mr.Yang.mongodb.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,6 +44,14 @@ public class ImageServiceImpl implements ImageService {
         return optionalSection.orElse(null);
     }
 
+    @Override
+    public List<Image> findByIds(List<String> ids){
+        List<Image> images = new ArrayList<>();
+        for (String id : ids) {
+            images.add(this.findById(Long.parseLong(id)));
+        }
+        return images;
+    }
 
     @Override
     public Image add(Image Image) {

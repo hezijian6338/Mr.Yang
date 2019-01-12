@@ -1,8 +1,10 @@
 package info.Mr.Yang.mongodb.service.impl;
 
 import info.Mr.Yang.mongodb.dao.PageDao;
+import info.Mr.Yang.mongodb.dto.Pages;
 import info.Mr.Yang.mongodb.model.Page;
 import info.Mr.Yang.mongodb.service.PageService;
+import info.Mr.Yang.mongodb.service.SectionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +34,9 @@ public class PageServiceImpl implements PageService {
         this.dao = dao;
     }
 
+    @Autowired
+    private SectionService sectionService;
+
     @Override
     public List<Page> findAll() {
         return dao.findAll();
@@ -42,7 +47,17 @@ public class PageServiceImpl implements PageService {
         Optional<Page> optionalPage = dao.findById(id);
         return optionalPage.orElse(null);
     }
-    
+
+    @Override
+    public Pages findSById(Long id) {
+        Page page = this.findById(id);
+        Pages pages = new Pages();
+        pages.setId(page.getId());
+        pages.setBackgroundColor(page.getBackgroundColor());
+        pages.setName(page.getName());
+        // pages.setSections(sectionService.);
+        return pages;
+    }
 
     @Override
     public Page add(Page Page) {

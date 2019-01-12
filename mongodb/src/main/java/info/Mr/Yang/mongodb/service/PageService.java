@@ -1,5 +1,6 @@
 package info.Mr.Yang.mongodb.service;
 
+import info.Mr.Yang.mongodb.dto.Pages;
 import info.Mr.Yang.mongodb.model.Page;
 
 import java.util.List;
@@ -35,6 +36,8 @@ public interface PageService {
      * @return
      */
     Page findById(Long id);
+
+    Pages findSById(Long id);
 
     /**
      * 添加

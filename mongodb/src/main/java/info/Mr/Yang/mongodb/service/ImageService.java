@@ -36,6 +36,8 @@ public interface ImageService {
      */
     Image findById(Long id);
 
+    List<Image> findByIds(List<String> ids);
+
     /**
      * 添加
      *

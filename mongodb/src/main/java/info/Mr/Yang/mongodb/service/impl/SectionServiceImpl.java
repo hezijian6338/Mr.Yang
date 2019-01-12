@@ -1,11 +1,16 @@
 package info.Mr.Yang.mongodb.service.impl;
 
 import info.Mr.Yang.mongodb.dao.SectionDao;
+import info.Mr.Yang.mongodb.dto.Sections;
+import info.Mr.Yang.mongodb.model.ParameterDictionary;
 import info.Mr.Yang.mongodb.model.Section;
+import info.Mr.Yang.mongodb.service.ParameterDictionaryService;
 import info.Mr.Yang.mongodb.service.SectionService;
+import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,6 +37,9 @@ public class SectionServiceImpl implements SectionService {
         this.dao = dao;
     }
 
+    @Autowired
+    private ParameterDictionaryService parameterDictionaryService;
+
     @Override
     public List<Section> findAll() {
         return dao.findAll();
@@ -43,6 +51,15 @@ public class SectionServiceImpl implements SectionService {
         return optionalSection.orElse(null);
     }
 
+    @Override
+    public List<Sections> findByIds(List<String> ids) {
+        List<Sections> sections_list = new ArrayList<>();
+        for (String id : ids) {
+            Section section = this.findById(Long.parseLong(id));
+            Sections sections = this.findPD((long)section.getId());
+        }
+        return sections_list;
+    }
 
     @Override
     public Section add(Section Section) {
@@ -62,4 +79,12 @@ public class SectionServiceImpl implements SectionService {
     public void update(Section section) {
         dao.update((long)section.getId(), section);
     }
+
+    @Override
+    public Sections findPD(Long id) {
+        Sections sections = new Sections();
+        sections.setParameterDictionary(parameterDictionaryService.findPdsById(id));
+        return sections;
+    }
+
 }

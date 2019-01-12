@@ -2,9 +2,11 @@ package info.Mr.Yang.mongodb.controller;
 
 import info.Mr.Yang.core.base.Result;
 import info.Mr.Yang.core.constant.CodeConst;
+import info.Mr.Yang.mongodb.dto.Pages;
 import info.Mr.Yang.mongodb.model.Page;
 import info.Mr.Yang.mongodb.service.PageService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,6 +41,13 @@ public class PageController {
     public Result get(@PathVariable("id") Long id) {
         Page page = service.findById(id);
         return new Result<>(page);
+    }
+
+    @ApiOperation(value = "获取最终Page格式参数")
+    @RequestMapping(value = "{id}", method = RequestMethod.GET)
+    public Result getPages(@PathVariable("id") Long id) {
+        Pages pages = service.findSById(id);
+        return new Result<>(pages);
     }
 
     @RequestMapping(value = "findAll", method = RequestMethod.GET)

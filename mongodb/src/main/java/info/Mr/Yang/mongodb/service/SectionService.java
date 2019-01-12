@@ -1,5 +1,6 @@
 package info.Mr.Yang.mongodb.service;
 
+import info.Mr.Yang.mongodb.dto.Sections;
 import info.Mr.Yang.mongodb.model.Section;
 
 import java.util.List;
@@ -36,6 +37,8 @@ public interface SectionService {
      */
     Section findById(Long id);
 
+    List<Sections> findByIds(List<String> ids);
+
     /**
      * 添加
      *
@@ -58,5 +61,7 @@ public interface SectionService {
      * @return
      */
     void update(Section Section);
+
+    Sections findPD(Long id);
 
 }

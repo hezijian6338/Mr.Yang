@@ -26,4 +26,35 @@ public class Pages {
     @ApiModelProperty(value = "主页栏目")
     private List<Section> sections;
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setBackgroundColor(String backgroundColor) {
+        this.backgroundColor = backgroundColor;
+    }
+
+    public void setSections(List<Section> sections) {
+        this.sections = sections;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getBackgroundColor() {
+        return backgroundColor;
+    }
+
+    public List<Section> getSections() {
+        return sections;
+    }
 }

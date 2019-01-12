@@ -2,8 +2,10 @@ package info.Mr.Yang.mongodb.service.impl;
 
 import info.Mr.Yang.mongodb.dao.ParameterDictionaryDao;
 import info.Mr.Yang.mongodb.dao.ParameterDictionaryDao;
+import info.Mr.Yang.mongodb.dto.ParameterDictionarys;
 import info.Mr.Yang.mongodb.model.ParameterDictionary;
 import info.Mr.Yang.mongodb.model.ParameterDictionary;
+import info.Mr.Yang.mongodb.service.ImageService;
 import info.Mr.Yang.mongodb.service.ParameterDictionaryService;
 import info.Mr.Yang.mongodb.service.ParameterDictionaryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +37,9 @@ public class ParameterDictionaryServiceImpl implements ParameterDictionaryServic
         this.dao = dao;
     }
 
+    @Autowired
+    private ImageService imageService;
+
     @Override
     public List<ParameterDictionary> findAll() {
         return dao.findAll();
@@ -65,4 +70,38 @@ public class ParameterDictionaryServiceImpl implements ParameterDictionaryServic
     public void update(ParameterDictionary parameterDictionary) {
         dao.update((long)parameterDictionary.getId(), parameterDictionary);
     }
+
+    @Override
+    public ParameterDictionarys findImage(List<String> ids) {
+        ParameterDictionarys pds = new ParameterDictionarys();
+        pds.setImage(imageService.findByIds(ids));
+        return pds;
+    }
+
+    @Override
+    public ParameterDictionarys findPdsById(Long id) {
+        ParameterDictionary pd = this.findById(id);
+        ParameterDictionarys pds = this.findImage(pd.getImage());
+        pds.setBackgroundcolor(pd.getBackgroundcolor());
+        pds.setBoxcolor(pd.getBoxcolor());
+        pds.setBoxtype(pd.getBoxtype());
+        pds.setButtonvalue(pd.getButtonvalue());
+        pds.setColor(pd.getColor());
+        pds.setId(pd.getId());
+        pds.setImagegap(pd.getImagegap());
+        pds.setKeyword(pd.getKeyword());
+        pds.setPageSectionId(pd.getPageSectionId());
+        pds.setType(pd.getType());
+        pds.setTextalign(pd.getTextalign());
+        pds.setTag(pd.getTag());
+        pds.setSource(pd.getSource());
+        pds.setShowtype(pd.getShowtype());
+        pds.setShowsort(pd.getShowsort());
+        pds.setShownumber(pd.getShownumber());
+        pds.setProducttagid(pd.getProducttagid());
+        pds.setProductcategoryid(pd.getProductcategoryid());
+        pds.setPosition(pd.getPosition());
+        return pds;
+    }
+
 }

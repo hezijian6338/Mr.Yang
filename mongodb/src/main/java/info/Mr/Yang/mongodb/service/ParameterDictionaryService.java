@@ -1,5 +1,6 @@
 package info.Mr.Yang.mongodb.service;
 
+import info.Mr.Yang.mongodb.dto.ParameterDictionarys;
 import info.Mr.Yang.mongodb.model.ParameterDictionary;
 
 import java.util.List;
@@ -58,5 +59,9 @@ public interface ParameterDictionaryService {
      * @return
      */
     void update(ParameterDictionary ParameterDictionary);
+
+    ParameterDictionarys findImage(List<String> ids);
+
+    ParameterDictionarys findPdsById(Long id);
 
 }
