@@ -82,6 +82,9 @@ public class ParameterDictionary {
     @ApiModelProperty(value = "有待研究")
     private String producttagid;
 
+    @ApiModelProperty(value = "有待研究")
+    private String productids;
+
     public void setId(int id) {
         this.id = id;
     }

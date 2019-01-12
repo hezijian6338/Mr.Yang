@@ -27,6 +27,9 @@ public class Section {
     @ApiModelProperty(value = "关联页面的栏目id(唯一),也用来关联栏目内容的id(唯一)")
     private int pageSectionId;
 
+    @ApiModelProperty(value = "pd的id,因为发现psid不唯一")
+    private int pd_id;
+
     @ApiModelProperty(value = "栏目代码")
     private String code;
 
@@ -42,12 +45,20 @@ public class Section {
         this.pageSectionId = pageSectionId;
     }
 
+    public void setPd_id(int pd_id) {
+        this.pd_id = pd_id;
+    }
+
     public int getId() {
         return id;
     }
 
     public int getPageSectionId() {
         return pageSectionId;
+    }
+
+    public int getPd_id() {
+        return pd_id;
     }
 
     public String getCode() {
