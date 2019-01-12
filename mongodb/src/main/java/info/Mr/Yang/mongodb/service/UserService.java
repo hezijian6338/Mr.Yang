@@ -5,6 +5,7 @@ import info.Mr.Yang.mongodb.dto.UserIndex;
 import info.Mr.Yang.mongodb.model.User;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 把今天最好的表现当作明天最新的起点．．～
@@ -68,6 +69,8 @@ public interface UserService {
      * @return
      */
     void update(User User);
+
+    void update(Long id, Map<String, Object> updateFieldMap);
 
     UserDTO findUserById(Long id);
 

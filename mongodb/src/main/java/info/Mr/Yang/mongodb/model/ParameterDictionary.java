@@ -58,8 +58,8 @@ public class ParameterDictionary {
     @ApiModelProperty(value = "显示位置?")
     private int shownumber;
 
-    // @ApiModelProperty(value = "显示图片列表")  用PageSectionId来关联
-    // private List<String> imagelist;
+     @ApiModelProperty(value = "显示图片列表")  // 用PageSectionId来关联
+     private List<String> image;
 
     @ApiModelProperty(value = "有待研究")
     private int source;
@@ -158,6 +158,10 @@ public class ParameterDictionary {
         this.type = type;
     }
 
+    public void setImage(List<String> image) {
+        this.image = image;
+    }
+
     public int getId() {
         return id;
     }
@@ -234,4 +238,7 @@ public class ParameterDictionary {
         return textalign;
     }
 
+    public List<String> getImage() {
+        return image;
+    }
 }

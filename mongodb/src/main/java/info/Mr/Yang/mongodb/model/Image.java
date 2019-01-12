@@ -23,8 +23,8 @@ public class Image {
     @Id
     private int id;
 
-    @ApiModelProperty(value = "与栏目PageSectionId关联的字段")
-    private int pageSectionId;
+//    @ApiModelProperty(value = "与栏目PageSectionId关联的字段")
+//    private int pageSectionId;
 
     @ApiModelProperty(value = "点击图片的链接")
     private String link;
@@ -38,9 +38,9 @@ public class Image {
     @ApiModelProperty(value = "图片的标题")
     private String title;
 
-    public void setPageSectionId(int pageSectionId) {
-        this.pageSectionId = pageSectionId;
-    }
+//    public void setPageSectionId(int pageSectionId) {
+//        this.pageSectionId = pageSectionId;
+//    }
 
     public void setId(int id) {
         this.id = id;
@@ -62,9 +62,9 @@ public class Image {
         this.src = src;
     }
 
-    public int getPageSectionId() {
-        return pageSectionId;
-    }
+//    public int getPageSectionId() {
+//        return pageSectionId;
+//    }
 
     public int getId() {
         return id;

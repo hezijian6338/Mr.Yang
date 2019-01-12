@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -102,6 +103,18 @@ public class UserController {
     @RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
     public Result delete(@PathVariable("id") Long id) {
         service.delete(id);
+        return new Result(CodeConst.SUCCESS.getResultCode(), CodeConst.SUCCESS.getMessage());
+    }
+
+    @RequestMapping(value = "/", method = RequestMethod.PUT)
+    public Result update(@RequestBody User user) {
+        service.update(user);
+        return new Result(CodeConst.SUCCESS.getResultCode(), CodeConst.SUCCESS.getMessage());
+    }
+
+    @RequestMapping(value = "{id}", method = RequestMethod.PATCH)
+    public Result update(@PathVariable("id") Long id, @RequestBody Map<String, Object> updateFieldMap) {
+        service.update(id, updateFieldMap);
         return new Result(CodeConst.SUCCESS.getResultCode(), CodeConst.SUCCESS.getMessage());
     }
 

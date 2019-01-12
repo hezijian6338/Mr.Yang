@@ -20,18 +20,36 @@ import java.util.Map;
 
 public class BaseDaoImpl<T, ID extends Serializable> extends SimpleMongoRepository<T, ID> implements BaseDao<T, ID> {
 
+//    protected final MongoOperations mongoTemplate;
+//
+//    protected final MongoEntityInformation<T, ID> entityInformation;
+//
+//    private Class<T> clazz;
+//
+//    public BaseDaoImpl(MongoEntityInformation<T, ID> metadata, MongoOperations mongoOperations) {
+//        super(metadata, mongoOperations);
+//        this.mongoTemplate = mongoOperations;
+//        this.entityInformation = metadata;
+//        clazz = entityInformation.getJavaType();
+//    }
+
     protected final MongoOperations mongoTemplate;
 
     protected final MongoEntityInformation<T, ID> entityInformation;
 
-    private Class<T> clazz;
-
     public BaseDaoImpl(MongoEntityInformation<T, ID> metadata, MongoOperations mongoOperations) {
         super(metadata, mongoOperations);
-        this.mongoTemplate = mongoOperations;
+
+        this.mongoTemplate=mongoOperations;
         this.entityInformation = metadata;
-        clazz = entityInformation.getJavaType();
     }
+
+    private Class<T> clazz;
+
+    protected Class<T> getEntityClass(){
+        return entityInformation.getJavaType();
+    }
+
 
     /**
      * 修改

@@ -1,6 +1,5 @@
 package info.Mr.Yang.mongodb.service.impl;
 
-import info.Mr.Yang.mongodb.dao.AddressDao;
 import info.Mr.Yang.mongodb.dao.UserDao;
 import info.Mr.Yang.mongodb.dto.UserDTO;
 import info.Mr.Yang.mongodb.dto.UserIndex;
@@ -11,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -84,6 +84,12 @@ public class UserServiceImpl implements UserService {
     public void update(User User) {
         dao.update((long)User.getId(), User);
     }
+
+    @Override
+    public void update(Long id, Map<String, Object> updateFieldMap) {
+        dao.update(id, updateFieldMap);
+    }
+
 
     @Override
     public UserDTO findUserById(Long id) {
