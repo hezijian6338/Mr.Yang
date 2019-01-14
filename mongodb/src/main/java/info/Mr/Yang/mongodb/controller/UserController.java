@@ -57,7 +57,7 @@ public class UserController {
         this.service = service;
     }
 
-    @RequestMapping(value = "get/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "{id}", method = RequestMethod.GET)
     public Result get(@PathVariable("id") Long id) {
         // User user = service.findById(id);
         UserIndex user = service.findById_UserIndex(id);
