@@ -37,7 +37,7 @@ public class ProductController {
         this.service = service;
     }
 
-    @RequestMapping(value = "get/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "{id}", method = RequestMethod.GET)
     public Result get(@PathVariable("id") Long id) {
         Product product = service.findById(id);
         return new Result<>(product);
