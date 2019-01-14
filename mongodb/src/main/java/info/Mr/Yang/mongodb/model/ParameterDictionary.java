@@ -58,7 +58,7 @@ public class ParameterDictionary {
     @ApiModelProperty(value = "显示位置?")
     private int shownumber;
 
-     @ApiModelProperty(value = "显示图片列表")  // 用PageSectionId来关联
+     @ApiModelProperty(value = "显示图片列表")
      private List<String> image;
 
     @ApiModelProperty(value = "有待研究")

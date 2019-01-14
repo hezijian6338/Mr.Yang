@@ -56,7 +56,11 @@ public class SectionServiceImpl implements SectionService {
         List<Sections> sections_list = new ArrayList<>();
         for (String id : ids) {
             Section section = this.findById(Long.parseLong(id));
-            Sections sections = this.findPD((long)section.getId());
+            Sections sections = this.findPD((long)section.getPd_id());
+            sections.setCode(section.getCode());
+            sections.setId(section.getId());
+            sections.setPageSectionId(section.getPageSectionId());
+            sections_list.add(sections);
         }
         return sections_list;
     }

@@ -86,7 +86,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void update(Long id, Map<String, Object> updateFieldMap) {
+    public void update(Long id, Map<String, String> updateFieldMap) {
         dao.update(id, updateFieldMap);
     }
 

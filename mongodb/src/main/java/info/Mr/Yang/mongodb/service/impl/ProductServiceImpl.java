@@ -4,8 +4,16 @@ import info.Mr.Yang.mongodb.dao.ProductDao;
 import info.Mr.Yang.mongodb.model.Product;
 import info.Mr.Yang.mongodb.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.domain.Sort.Order;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,17 +40,33 @@ public class ProductServiceImpl implements ProductService {
         this.dao = dao;
     }
 
+    @Autowired
+    public MongoTemplate mongoTemplate;
+
     @Override
     public List<Product> findAll() {
         return dao.findAll();
     }
+
+//    @Override
+//    List<Product> findLimit(Long lastId, int PageSize) {
+//        //用来封装所有条件的对象
+//        Query query = new Query();
+//        //用来构建条件
+//        Criteria criteria = new Criteria();
+//        List<Order> orders = new ArrayList<Order>();  //排序
+//        orders.add(new Order(Direction.DESC, "_id"));
+//        Sort sort = new Sort(orders);
+//
+//
+//        return mongoTemplate.find()
+//    }
 
     @Override
     public Product findById(Long id) {
         Optional<Product> optionalProduct = dao.findById(id);
         return optionalProduct.orElse(null);
     }
-
 
     @Override
     public Product add(Product Product) {
@@ -60,6 +84,6 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void update(Product product) {
-        dao.update((long)product.getId(), product);
+        dao.update((long) product.getId(), product);
     }
 }

@@ -6,7 +6,6 @@ import info.Mr.Yang.mongodb.dto.Favorites;
 import info.Mr.Yang.mongodb.dto.UserIndex;
 import info.Mr.Yang.mongodb.model.Address;
 import info.Mr.Yang.mongodb.model.Coupon;
-import info.Mr.Yang.mongodb.model.Product;
 import info.Mr.Yang.mongodb.model.User;
 import info.Mr.Yang.mongodb.service.AddressService;
 import info.Mr.Yang.mongodb.service.CouponService;
@@ -18,6 +17,7 @@ import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -106,14 +106,16 @@ public class UserController {
         return new Result(CodeConst.SUCCESS.getResultCode(), CodeConst.SUCCESS.getMessage());
     }
 
+    @ApiOperation(value = "更新整个User空的部分")
     @RequestMapping(value = "/", method = RequestMethod.PUT)
     public Result update(@RequestBody User user) {
         service.update(user);
         return new Result(CodeConst.SUCCESS.getResultCode(), CodeConst.SUCCESS.getMessage());
     }
 
+    @ApiOperation(value = "根据id更新具体的键值对")
     @RequestMapping(value = "{id}", method = RequestMethod.PATCH)
-    public Result update(@PathVariable("id") Long id, @RequestBody Map<String, Object> updateFieldMap) {
+    public Result update(@PathVariable("id") Long id, @RequestBody Map updateFieldMap) {
         service.update(id, updateFieldMap);
         return new Result(CodeConst.SUCCESS.getResultCode(), CodeConst.SUCCESS.getMessage());
     }

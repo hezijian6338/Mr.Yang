@@ -47,6 +47,7 @@ public class ProductController {
     public Result findAll(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size) {
         PageHelper.startPage(page, size);
         PageInfo pageInfo = new PageInfo(service.findAll());
+
         return new Result<>(pageInfo);
     }
 

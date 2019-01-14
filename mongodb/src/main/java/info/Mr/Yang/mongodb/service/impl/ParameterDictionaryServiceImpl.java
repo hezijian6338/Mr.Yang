@@ -3,6 +3,7 @@ package info.Mr.Yang.mongodb.service.impl;
 import info.Mr.Yang.mongodb.dao.ParameterDictionaryDao;
 import info.Mr.Yang.mongodb.dao.ParameterDictionaryDao;
 import info.Mr.Yang.mongodb.dto.ParameterDictionarys;
+import info.Mr.Yang.mongodb.model.Image;
 import info.Mr.Yang.mongodb.model.ParameterDictionary;
 import info.Mr.Yang.mongodb.model.ParameterDictionary;
 import info.Mr.Yang.mongodb.service.ImageService;
@@ -11,6 +12,7 @@ import info.Mr.Yang.mongodb.service.ParameterDictionaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -72,16 +74,18 @@ public class ParameterDictionaryServiceImpl implements ParameterDictionaryServic
     }
 
     @Override
-    public ParameterDictionarys findImage(List<String> ids) {
-        ParameterDictionarys pds = new ParameterDictionarys();
-        pds.setImage(imageService.findByIds(ids));
-        return pds;
+    public List<Image> findImage(List<String> ids) {
+        // ParameterDictionarys pds = new ParameterDictionarys();
+        // List<Image> image = new ArrayList<>();
+        // image.add(imageService.findByIds(ids));
+        return imageService.findByIds(ids);
     }
 
     @Override
     public ParameterDictionarys findPdsById(Long id) {
         ParameterDictionary pd = this.findById(id);
-        ParameterDictionarys pds = this.findImage(pd.getImage());
+        ParameterDictionarys pds = new ParameterDictionarys();
+        pds.setImagelist(this.findImage(pd.getImage()));
         pds.setBackgroundcolor(pd.getBackgroundcolor());
         pds.setBoxcolor(pd.getBoxcolor());
         pds.setBoxtype(pd.getBoxtype());

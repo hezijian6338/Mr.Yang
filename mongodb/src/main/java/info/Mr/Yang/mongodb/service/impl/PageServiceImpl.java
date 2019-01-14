@@ -55,7 +55,7 @@ public class PageServiceImpl implements PageService {
         pages.setId(page.getId());
         pages.setBackgroundColor(page.getBackgroundColor());
         pages.setName(page.getName());
-        // pages.setSections(sectionService.);
+        pages.setSections(sectionService.findByIds(page.getSection_id()));
         return pages;
     }
 

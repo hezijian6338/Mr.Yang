@@ -24,7 +24,7 @@ public class Pages {
     private String backgroundColor;
 
     @ApiModelProperty(value = "主页栏目")
-    private List<Section> sections;
+    private List<Sections> sections;
 
     public void setId(int id) {
         this.id = id;
@@ -38,7 +38,7 @@ public class Pages {
         this.backgroundColor = backgroundColor;
     }
 
-    public void setSections(List<Section> sections) {
+    public void setSections(List<Sections> sections) {
         this.sections = sections;
     }
 
@@ -54,7 +54,7 @@ public class Pages {
         return backgroundColor;
     }
 
-    public List<Section> getSections() {
+    public List<Sections> getSections() {
         return sections;
     }
 }

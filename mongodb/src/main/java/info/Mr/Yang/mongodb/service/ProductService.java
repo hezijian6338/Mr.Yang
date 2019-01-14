@@ -28,6 +28,8 @@ public interface ProductService {
      */
     List<Product> findAll();
 
+//    List<Product> findLimit(Long lastId, int PageSize);
+
     /**
      * 根据id查
      *
