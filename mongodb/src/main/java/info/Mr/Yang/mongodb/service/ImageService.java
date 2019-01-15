@@ -3,6 +3,7 @@ package info.Mr.Yang.mongodb.service;
 import info.Mr.Yang.mongodb.model.Image;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 把今天最好的表现当作明天最新的起点．．～
@@ -56,9 +57,9 @@ public interface ImageService {
     /**
      * 更新
      *
-     * @param image
+     * @param id, updateFielMap
      * @return
      */
-    Image update(Image image);
+    void update(Long id, Map<String, String> updateFieldMap);
 
 }

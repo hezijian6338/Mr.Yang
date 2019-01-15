@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -68,7 +69,7 @@ public class ImageServiceImpl implements ImageService {
     }
 
     @Override
-    public Image update(Image Image) {
-        return dao.save(Image);
+    public void update(Long id, Map<String, String> updateFieldMap) {
+        dao.update(id, updateFieldMap);
     }
 }
