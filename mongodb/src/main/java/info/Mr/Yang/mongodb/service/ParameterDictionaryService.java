@@ -5,6 +5,7 @@ import info.Mr.Yang.mongodb.model.Image;
 import info.Mr.Yang.mongodb.model.ParameterDictionary;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 把今天最好的表现当作明天最新的起点．．～
@@ -56,10 +57,10 @@ public interface ParameterDictionaryService {
     /**
      * 更新
      *
-     * @param ParameterDictionary
+     * @param id, updateFieldMap
      * @return
      */
-    void update(ParameterDictionary ParameterDictionary);
+    void update(Long id, Map<String, String> updateFieldMap);
 
     List<Image> findImage(List<String> ids);
 

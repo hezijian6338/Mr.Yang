@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -69,8 +70,8 @@ public class ParameterDictionaryServiceImpl implements ParameterDictionaryServic
     }
 
     @Override
-    public void update(ParameterDictionary parameterDictionary) {
-        dao.update((long)parameterDictionary.getId(), parameterDictionary);
+    public void update(Long id, Map<String, String> updateFieldMap) {
+        dao.update(id, updateFieldMap);
     }
 
     @Override
