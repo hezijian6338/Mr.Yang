@@ -70,7 +70,7 @@ public class ParameterDictionaryServiceImpl implements ParameterDictionaryServic
     }
 
     @Override
-    public void update(Long id, Map<String, String> updateFieldMap) {
+    public void update(Long id, Map<String, Object> updateFieldMap) {
         dao.update(id, updateFieldMap);
     }
 

@@ -68,7 +68,7 @@ public class BaseDaoImpl<T, ID extends Serializable> extends SimpleMongoReposito
      * @param updateFieldMap  key:需要更新的属性  value:对应的属性值
      */
     @Override
-    public void update(ID id, Map<String, String> updateFieldMap) {
+    public void update(ID id, Map<String, Object> updateFieldMap) {
         if (updateFieldMap != null && !updateFieldMap.isEmpty()) {
             Criteria criteria = new Criteria("_id").is(id);
             Update update = new Update();

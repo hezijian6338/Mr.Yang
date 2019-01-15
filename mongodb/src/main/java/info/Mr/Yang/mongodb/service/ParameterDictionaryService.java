@@ -60,7 +60,7 @@ public interface ParameterDictionaryService {
      * @param id, updateFieldMap
      * @return
      */
-    void update(Long id, Map<String, String> updateFieldMap);
+    void update(Long id, Map<String, Object> updateFieldMap);
 
     List<Image> findImage(List<String> ids);
 

@@ -70,7 +70,7 @@ public interface UserService {
      */
     void update(User User);
 
-    void update(Long id, Map<String, String> updateFieldMap);
+    void update(Long id, Map<String, Object> updateFieldMap);
 
     UserDTO findUserById(Long id);
 

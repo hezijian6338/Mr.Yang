@@ -69,7 +69,7 @@ public class ImageServiceImpl implements ImageService {
     }
 
     @Override
-    public void update(Long id, Map<String, String> updateFieldMap) {
+    public void update(Long id, Map<String, Object> updateFieldMap) {
         dao.update(id, updateFieldMap);
     }
 }

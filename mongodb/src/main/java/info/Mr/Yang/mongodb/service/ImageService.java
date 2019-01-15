@@ -60,6 +60,6 @@ public interface ImageService {
      * @param id, updateFielMap
      * @return
      */
-    void update(Long id, Map<String, String> updateFieldMap);
+    void update(Long id, Map<String, Object> updateFieldMap);
 
 }

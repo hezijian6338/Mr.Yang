@@ -27,7 +27,7 @@ public interface BaseDao<T, ID extends Serializable> extends MongoRepository<T,I
      * @param id 更新主键
      * @param updateFieldMap  key:需要更新的属性  value:对应的属性值
      */
-    void update(ID id, Map<String, String> updateFieldMap);
+    void update(ID id, Map<String, Object> updateFieldMap);
 
     /**
      * 根据传入值修改
