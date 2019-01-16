@@ -125,10 +125,13 @@ public class MongoUserController {
         BufferedImage img = ImageIO.read(in);
         int width = img.getWidth();
         int height = img.getHeight();
+        float scal = w/width;
+        int h = (int)(height*scal);
+        System.out.println("image width: " + width + "; image height: " + height);
         BufferedImage dimg = new BufferedImage(w, w, img.getType());
         Graphics2D g = dimg.createGraphics();
         g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g.drawImage(img, 0, 0, 80, 39, 0, 0, width, height, null);
+        g.drawImage(img, 0, 0, w, h, 0, 0, width, height, null);
         g.dispose();
 
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -142,8 +145,8 @@ public class MongoUserController {
 
         String encoded = Base64.getEncoder().encodeToString(data);
 
-        System.out.println(encoded);
-        return finalImage;
+        // System.out.println(encoded);
+        return data;
     }
 
     @RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
