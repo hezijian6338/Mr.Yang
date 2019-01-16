@@ -3,6 +3,7 @@ package info.Mr.Yang.mongodb.service;
 import info.Mr.Yang.mongodb.model.Product;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 把今天最好的表现当作明天最新的起点．．～
@@ -59,6 +60,6 @@ public interface ProductService {
      * @param Product
      * @return
      */
-    void update(Product Product);
+    void update(Long id, Map<String, Object> updateFieldMap);
 
 }

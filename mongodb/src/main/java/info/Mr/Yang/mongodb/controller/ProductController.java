@@ -7,8 +7,11 @@ import info.Mr.Yang.core.constant.CodeConst;
 import info.Mr.Yang.mongodb.model.Product;
 import info.Mr.Yang.mongodb.service.ProductService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 
 /**
@@ -62,6 +65,13 @@ public class ProductController {
     @RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
     public Result delete(@PathVariable("id") Long id) {
         service.delete(id);
+        return new Result(CodeConst.SUCCESS.getResultCode(), CodeConst.SUCCESS.getMessage());
+    }
+
+    @ApiOperation(value = "根据id更新具体的键值对")
+    @RequestMapping(value = "{id}", method = RequestMethod.PATCH)
+    public Result update(@PathVariable("id") Long id, @RequestBody Map updateFieldMap) {
+        service.update(id, updateFieldMap);
         return new Result(CodeConst.SUCCESS.getResultCode(), CodeConst.SUCCESS.getMessage());
     }
 

@@ -15,6 +15,7 @@ import org.springframework.data.domain.Sort.Order;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -83,7 +84,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void update(Product product) {
-        dao.update((long) product.getId(), product);
+    public void update(Long id, Map<String, Object> updateFieldMap) {
+        dao.update(id, updateFieldMap);
     }
 }
