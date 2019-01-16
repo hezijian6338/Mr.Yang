@@ -50,12 +50,12 @@ public class ProductServiceImpl implements ProductService {
     }
 
 //    @Override
-//    List<Product> findLimit(Long lastId, int PageSize) {
+//    SkuList<Product> findLimit(Long lastId, int PageSize) {
 //        //用来封装所有条件的对象
 //        Query query = new Query();
 //        //用来构建条件
 //        Criteria criteria = new Criteria();
-//        List<Order> orders = new ArrayList<Order>();  //排序
+//        SkuList<Order> orders = new ArrayList<Order>();  //排序
 //        orders.add(new Order(Direction.DESC, "_id"));
 //        Sort sort = new Sort(orders);
 //

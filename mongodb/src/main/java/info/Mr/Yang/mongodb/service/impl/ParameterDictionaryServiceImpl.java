@@ -77,7 +77,7 @@ public class ParameterDictionaryServiceImpl implements ParameterDictionaryServic
     @Override
     public List<Image> findImage(List<String> ids) {
         // ParameterDictionarys pds = new ParameterDictionarys();
-        // List<Image> image = new ArrayList<>();
+        // SkuList<Image> image = new ArrayList<>();
         // image.add(imageService.findByIds(ids));
         return imageService.findByIds(ids);
     }

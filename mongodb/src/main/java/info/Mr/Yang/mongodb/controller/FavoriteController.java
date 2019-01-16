@@ -46,7 +46,7 @@ public class FavoriteController {
 
 //    @RequestMapping(value = "{user_id}/products", method = RequestMethod.GET)
 //    public Result getByUser(@PathVariable("user_id") Long user_id) {
-//        List<Product> favorites = service.findProductByUser(user_id);
+//        SkuList<Product> favorites = service.findProductByUser(user_id);
 //        return new Result<>(favorites);
 //    }
 
