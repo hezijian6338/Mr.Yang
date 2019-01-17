@@ -25,6 +25,9 @@ public class Goods {
     @Id
     private String id;
 
+    @ApiModelProperty(value = "产品id,关联产品的id")
+    private String product_id;
+
     @ApiModelProperty(value = "产品详情标题")
     private String title;
 
@@ -57,6 +60,10 @@ public class Goods {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public void setProduct_id(String product_id) {
+        this.product_id = product_id;
     }
 
     public void setPrice(int price) {
@@ -105,6 +112,10 @@ public class Goods {
 
     public String getId() {
         return id;
+    }
+
+    public String getProduct_id() {
+        return product_id;
     }
 
     public int getPrice() {
