@@ -4,6 +4,8 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import info.Mr.Yang.core.base.Result;
 import info.Mr.Yang.core.constant.CodeConst;
+import info.Mr.Yang.mongodb.dto.Goodss;
+import info.Mr.Yang.mongodb.dto.Pages;
 import info.Mr.Yang.mongodb.model.ProductDetail.Goods;
 import info.Mr.Yang.mongodb.service.ProductDetailService.GoodsService;
 import io.swagger.annotations.Api;
@@ -40,10 +42,17 @@ public class GoodsController {
         this.service = service;
     }
 
-    @RequestMapping(value = "{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "get/{id}", method = RequestMethod.GET)
     public Result get(@PathVariable("id") String id) {
         Goods goods = service.findById(id);
         return new Result<>(goods);
+    }
+
+    @ApiOperation(value = "获取最终Goods格式参数")
+    @RequestMapping(value = "{id}", method = RequestMethod.GET)
+    public Result getPages(@PathVariable("id") String id) {
+        Goodss goodss = service.fillById(id);
+        return new Result<>(goodss);
     }
 
     @RequestMapping(value = "findAll", method = RequestMethod.GET)

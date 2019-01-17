@@ -69,7 +69,11 @@ public class GoodsServiceImpl implements GoodsService {
         goodss.setRemain(goods.getRemain());
         goodss.setProduct_id(goods.getProduct_id());
         goodss.setPrice(goods.getPrice());
-        goodss.setMarket_price();
+        goodss.setMarket_price(goods.getMarket_price());
+        goodss.setInfo(goods.getInfo());
+        goodss.setExpress(goods.getExpress());
+        goodss.setId(goods.getId());
+        return goodss;
     }
 
     @Override
