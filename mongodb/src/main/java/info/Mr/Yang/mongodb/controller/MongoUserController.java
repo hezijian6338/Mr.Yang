@@ -4,14 +4,18 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 import com.mongodb.client.gridfs.GridFSFindIterable;
 import com.mongodb.client.gridfs.model.GridFSFile;
+import com.mongodb.gridfs.GridFS;
+import info.Mr.Yang.core.untils.FileUtil;
 import info.Mr.Yang.mongodb.model.MongoUser;
 import info.Mr.Yang.core.base.Result;
 import info.Mr.Yang.core.constant.CodeConst;
 import info.Mr.Yang.mongodb.service.MongoUserService;
 import io.swagger.annotations.Api;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.gridfs.GridFsCriteria;
@@ -25,6 +29,10 @@ import javax.imageio.stream.FileImageOutputStream;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Base64;
 import java.util.Date;
 
@@ -57,6 +65,9 @@ public class MongoUserController {
     @Autowired
     private GridFsTemplate gridFsTemplate;
 
+    @Value("${server.port}")
+    private String port;
+
     @RequestMapping(value = "get/{id}", method = RequestMethod.GET)
     public Result get(@PathVariable("id") Long id) {
         MongoUser mongoUser = service.findById(id);
@@ -76,14 +87,29 @@ public class MongoUserController {
     }
 
     @RequestMapping(value = "upload", method = RequestMethod.POST)
-    public Result upload(@RequestParam("file") MultipartFile file) {
+    public Result upload(@RequestParam("file") MultipartFile file, @RequestParam(value = "fileName", required = false, defaultValue = "") String fileName) {
         // GridFS gridFS = new GridFS(mongodbfactory.getLegacyDb(), "photo");
         // LOGGER.info("Saving file..");
         // DBObject metaData = new BasicDBObject();
         BasicDBObject metaData = new BasicDBObject();
         metaData.put("createdDate", new Date());
 
-        String fileName = file.getOriginalFilename();
+        if (fileName.isEmpty()) {
+            fileName = file.getOriginalFilename();
+        }
+
+        // String oldName = FileUtil.getNamePart(fileName);
+        String oldName = StringUtils.substringBefore(fileName, ".");
+
+        //Date ------> Date对象
+        //创建日期格式化对象   因为DateFormat类为抽象类 所以不能new
+        DateFormat bf = new SimpleDateFormat("yyyyMMddHHmmss");//多态
+        //2017-04-19 星期三 下午 20:17:38
+
+        Date date = new Date();//创建时间
+        String format = bf.format(date);//格式化 bf.format(date);
+
+        String newName = oldName + "_" + format + "." + FileUtil.getFileType(file.getOriginalFilename());
 
         // LOGGER.info("File Name: " + fileName);
 
@@ -92,11 +118,11 @@ public class MongoUserController {
         ObjectId objectId;
         try {
             inputStream = file.getInputStream();
-            objectId = gridFsTemplate.store(inputStream, fileName, file.getContentType(), metaData);
+            objectId = gridFsTemplate.store(inputStream, newName, file.getContentType(), metaData);
             ObjectId _id = (ObjectId) metaData.get("_id");
 
             // LOGGER.info("File saved: " + fileName);
-            ObjectId oid = new ObjectId(objectId.getTimestamp(),objectId.getMachineIdentifier(),objectId.getProcessIdentifier(),objectId.getCounter());
+            ObjectId oid = new ObjectId(objectId.getTimestamp(), objectId.getMachineIdentifier(), objectId.getProcessIdentifier(), objectId.getCounter());
             System.out.println("ObjectId: " + oid.equals(objectId) + "oid: " + oid.toHexString() + ";objectid: " + objectId.toHexString());
         } catch (IOException e) {
             // LOGGER.error("IOException: " + e);
@@ -104,8 +130,16 @@ public class MongoUserController {
         }
         GridFSFile gridFSFile = gridFsTemplate.findOne(Query.query(GridFsCriteria.where("_id").is(objectId.toHexString())));
         System.out.println(gridFSFile.getFilename());
+
+        InetAddress address = null;
+        try {
+            address = InetAddress.getLocalHost();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
+        String fileUrl = "http://" + address.getHostAddress() + ":" + port + "/mongo/img/" + newName;
         // LOGGER.info("File return: " + fileName);
-        return new Result<>(objectId);
+        return new Result<>(fileUrl);
     }
 
     @RequestMapping(value = "img/{fileName}", method = RequestMethod.GET)
@@ -125,8 +159,8 @@ public class MongoUserController {
         BufferedImage img = ImageIO.read(in);
         int width = img.getWidth();
         int height = img.getHeight();
-        float scal = w/width;
-        int h = (int)(height*scal);
+        float scal = w / width;
+        int h = (int) (height * scal);
         System.out.println("image width: " + width + "; image height: " + height);
         BufferedImage dimg = new BufferedImage(w, w, img.getType());
         Graphics2D g = dimg.createGraphics();
