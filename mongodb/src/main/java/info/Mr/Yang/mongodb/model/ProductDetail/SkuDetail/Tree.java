@@ -1,6 +1,11 @@
 package info.Mr.Yang.mongodb.model.ProductDetail.SkuDetail;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import org.springframework.data.annotation.Id;
 
 import java.util.List;
 
@@ -11,7 +16,14 @@ import java.util.List;
  * @create: 2019-01-16 15:08
  **/
 
+@Data
+@ToString(callSuper = false)
+@NoArgsConstructor
+@AllArgsConstructor
 public class Tree {
+
+    @Id
+    private String id;
 
     @ApiModelProperty(value = "规格名称")
     private String k;
@@ -21,6 +33,10 @@ public class Tree {
 
     @ApiModelProperty(value = "规格代号/id")
     private String k_s;
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public void setK(String k) {
         this.k = k;
@@ -45,4 +61,9 @@ public class Tree {
     public String getK_s() {
         return k_s;
     }
+
+    public String getId() {
+        return id;
+    }
+
 }

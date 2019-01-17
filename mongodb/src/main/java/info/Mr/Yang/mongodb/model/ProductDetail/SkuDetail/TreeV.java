@@ -11,7 +11,6 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class TreeV {
 
-
     private String id;
 
     @ApiModelProperty(value = "详情中的名称")

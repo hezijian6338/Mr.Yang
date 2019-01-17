@@ -50,9 +50,97 @@ public class Goods {
     private String info;
 
     @ApiModelProperty(value = "提供服务的详情")
-    private List<GoodsPromise> goodsPromises;
+    private List<Object> goodsPromises;
 
     @ApiModelProperty(value = "放商品规格详情")
     private String sku_id;
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public String getExpress() {
+        return express;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
+    public void setExpress(String express) {
+        this.express = express;
+    }
+
+    public void setGoodsPromises(List<Object> goodsPromises) {
+        this.goodsPromises = goodsPromises;
+    }
+
+    public void setMarket_price(int market_price) {
+        this.market_price = market_price;
+    }
+
+    public void setRemain(int remain) {
+        this.remain = remain;
+    }
+
+    public void setSku_id(String sku_id) {
+        this.sku_id = sku_id;
+    }
+
+    public void setSubtitle(String subtitle) {
+        this.subtitle = subtitle;
+    }
+
+    public void setThumb(List<String> thumb) {
+        this.thumb = thumb;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public int getMarket_price() {
+        return market_price;
+    }
+
+    public int getRemain() {
+        return remain;
+    }
+
+    public List<Object> getGoodsPromises() {
+        return goodsPromises;
+    }
+
+    public List<String> getThumb() {
+        return thumb;
+    }
+
+    public String getSku_id() {
+        return sku_id;
+    }
+
+    public String getSubtitle() {
+        return subtitle;
+    }
 
 }

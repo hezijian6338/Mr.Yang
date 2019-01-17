@@ -1,6 +1,11 @@
 package info.Mr.Yang.mongodb.model.ProductDetail.SkuDetail;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import org.springframework.data.annotation.Id;
 
 /**
  * @program: Shop
@@ -9,8 +14,13 @@ import io.swagger.annotations.ApiModelProperty;
  * @create: 2019-01-16 15:08
  **/
 
+@Data
+@ToString(callSuper = false)
+@NoArgsConstructor
+@AllArgsConstructor
 public class SkuList {
 
+    @Id
     private String id;
 
     @ApiModelProperty(value = "组合价格")

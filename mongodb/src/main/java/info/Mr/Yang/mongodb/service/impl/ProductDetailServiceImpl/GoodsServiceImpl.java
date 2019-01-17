@@ -1,19 +1,12 @@
-package info.Mr.Yang.mongodb.service.impl;
+package info.Mr.Yang.mongodb.service.impl.ProductDetailServiceImpl;
 
-import info.Mr.Yang.mongodb.dao.ProductDao;
-import info.Mr.Yang.mongodb.model.Product;
-import info.Mr.Yang.mongodb.service.ProductService;
+import info.Mr.Yang.mongodb.dao.ProductDetailDao.GoodsDao;
+import info.Mr.Yang.mongodb.model.ProductDetail.Goods;
+import info.Mr.Yang.mongodb.service.ProductDetailService.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Direction;
-import org.springframework.data.domain.Sort.Order;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -33,11 +26,11 @@ import java.util.Optional;
  **/
 
 @Service
-public class ProductServiceImpl implements ProductService {
-    private final ProductDao dao;
+public class GoodsServiceImpl implements GoodsService {
+    private final GoodsDao dao;
 
     @Autowired
-    public ProductServiceImpl(ProductDao dao) {
+    public GoodsServiceImpl(GoodsDao dao) {
         this.dao = dao;
     }
 
@@ -45,24 +38,29 @@ public class ProductServiceImpl implements ProductService {
     public MongoTemplate mongoTemplate;
 
     @Override
-    public List<Product> findAll() {
+    public List<Goods> findAll() {
         return dao.findAll();
     }
-
+    
     @Override
-    public Product findById(Long id) {
-        Optional<Product> optionalProduct = dao.findById(id);
+    public Goods findById(String id) {
+        Optional<Goods> optionalProduct = dao.findById(id);
         return optionalProduct.orElse(null);
     }
 
     @Override
-    public Product add(Product Product) {
-        return dao.save(Product);
+    public List<Goods> findByIds(List<String> Ids) {
+        return null;
     }
 
     @Override
-    public void delete(Long id) {
-        Optional<Product> optional = dao.findById(id);
+    public Goods add(Goods goods) {
+        return dao.save(goods);
+    }
+
+    @Override
+    public void delete(String id) {
+        Optional<Goods> optional = dao.findById(id);
         if (!optional.isPresent()) {
             return;
         }
@@ -70,7 +68,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void update(Long id, Map<String, Object> updateFieldMap) {
+    public void update(String id, Map<String, Object> updateFieldMap) {
         dao.update(id, updateFieldMap);
     }
 }

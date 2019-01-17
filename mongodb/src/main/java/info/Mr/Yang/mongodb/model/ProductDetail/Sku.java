@@ -28,10 +28,10 @@ public class Sku {
     private String id;
 
     @ApiModelProperty(value = "规格详情")
-    private List<Tree> tree;
+    private List<Object> tree;
 
     @ApiModelProperty(value = "规格组合")
-    private List<SkuList> list;
+    private List<Object> list;
 
     @ApiModelProperty(value = "无规格商品 skuId 取 collection_id，否则取所选 sku 组合对应的 id")
     private String collection_id;
@@ -47,5 +47,61 @@ public class Sku {
 
     @ApiModelProperty(value = "hide_stock")
     private boolean hide_stock;
+
+    public void setStock_num(int stock_num) {
+        this.stock_num = stock_num;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setCollection_id(String collection_id) {
+        this.collection_id = collection_id;
+    }
+
+    public void setHide_stock(boolean hide_stock) {
+        this.hide_stock = hide_stock;
+    }
+
+    public void setList(List<Object> list) {
+        this.list = list;
+    }
+
+    public void setNone_sku(boolean none_sku) {
+        this.none_sku = none_sku;
+    }
+
+    public void setTree(List<Object> tree) {
+        this.tree = tree;
+    }
+
+    public int getStock_num() {
+        return stock_num;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public List<Object> getList() {
+        return list;
+    }
+
+    public List<Object> getTree() {
+        return tree;
+    }
+
+    public String getCollection_id() {
+        return collection_id;
+    }
 
 }
