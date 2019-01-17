@@ -1,8 +1,11 @@
 package info.Mr.Yang.mongodb.service.impl.ProductDetailServiceImpl;
 
 import info.Mr.Yang.mongodb.dao.ProductDetailDao.GoodsDao;
+import info.Mr.Yang.mongodb.dto.Goodss;
 import info.Mr.Yang.mongodb.model.ProductDetail.Goods;
+import info.Mr.Yang.mongodb.service.ProductDetailService.GoodsPromiseService;
 import info.Mr.Yang.mongodb.service.ProductDetailService.GoodsService;
+import info.Mr.Yang.mongodb.service.ProductDetailService.SkuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
@@ -37,6 +40,12 @@ public class GoodsServiceImpl implements GoodsService {
     @Autowired
     public MongoTemplate mongoTemplate;
 
+    @Autowired
+    private GoodsPromiseService goodsPromiseService;
+
+    @Autowired
+    private SkuService skuService;
+
     @Override
     public List<Goods> findAll() {
         return dao.findAll();
@@ -46,6 +55,21 @@ public class GoodsServiceImpl implements GoodsService {
     public Goods findById(String id) {
         Optional<Goods> optionalProduct = dao.findById(id);
         return optionalProduct.orElse(null);
+    }
+
+    @Override
+    public Goodss fillById(String id) {
+        Goodss goodss = new Goodss();
+        Goods goods = this.findById(id);
+        goodss.setGoodsPromises(goodsPromiseService.findByIds(goods.getGoodsPromises()));
+        goodss.setTitle(goods.getTitle());
+        goodss.setThumb(goods.getThumb());
+        goodss.setSubtitle(goods.getSubtitle());
+        goodss.setSku_id(skuService.fillById(goods.getSku_id()));
+        goodss.setRemain(goods.getRemain());
+        goodss.setProduct_id(goods.getProduct_id());
+        goodss.setPrice(goods.getPrice());
+        goodss.setMarket_price();
     }
 
     @Override

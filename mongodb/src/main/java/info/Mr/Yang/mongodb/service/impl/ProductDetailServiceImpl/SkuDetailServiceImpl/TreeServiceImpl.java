@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -50,7 +51,11 @@ public class TreeServiceImpl implements TreeService {
 
     @Override
     public List<Tree> findByIds(List<String> Ids) {
-        return null;
+        List<Tree> trees = new ArrayList<>();
+        for (String id : Ids) {
+            trees.add(this.findById(id));
+        }
+        return trees;
     }
 
     @Override

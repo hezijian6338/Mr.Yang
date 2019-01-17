@@ -1,37 +1,28 @@
-package info.Mr.Yang.mongodb.model.ProductDetail;
+package info.Mr.Yang.mongodb.dto;
 
 import info.Mr.Yang.mongodb.model.ProductDetail.SkuDetail.SkuList;
 import info.Mr.Yang.mongodb.model.ProductDetail.SkuDetail.Tree;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
 import org.springframework.data.annotation.Id;
 
 import java.util.List;
 
 /**
  * @program: Shop
- * @description: 商品规格总表
+ * @description: 完整的Sku
  * @author: hezijian6338
- * @create: 2019-01-16 15:31
+ * @create: 2019-01-17 16:09
  **/
 
-@Data
-@ToString(callSuper = false)
-@NoArgsConstructor
-@AllArgsConstructor
-public class Sku {
+public class Skus {
 
-    @Id
     private String id;
 
     @ApiModelProperty(value = "规格详情")
-    private List<String> tree;
+    private List<Tree> tree;
 
     @ApiModelProperty(value = "规格组合")
-    private List<String> list;
+    private List<SkuList> list;
 
     @ApiModelProperty(value = "无规格商品 skuId 取 collection_id，否则取所选 sku 组合对应的 id")
     private String collection_id;
@@ -68,16 +59,16 @@ public class Sku {
         this.hide_stock = hide_stock;
     }
 
-    public void setTree(List<String> tree) {
-        this.tree = tree;
+    public void setList(List<SkuList> list) {
+        this.list = list;
     }
 
     public void setNone_sku(boolean none_sku) {
         this.none_sku = none_sku;
     }
 
-    public void setList(List<String> list) {
-        this.list = list;
+    public void setTree(List<Tree> tree) {
+        this.tree = tree;
     }
 
     public boolean getNone_sku(){
@@ -87,6 +78,7 @@ public class Sku {
     public boolean getHide_stock(){
         return hide_stock;
     }
+
 
     public int getStock_num() {
         return stock_num;
@@ -100,16 +92,15 @@ public class Sku {
         return id;
     }
 
-    public List<String> getList() {
+    public List<SkuList> getList() {
         return list;
     }
 
-    public List<String> getTree() {
+    public List<Tree> getTree() {
         return tree;
     }
 
     public String getCollection_id() {
         return collection_id;
     }
-
 }

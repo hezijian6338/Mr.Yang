@@ -1,5 +1,6 @@
 package info.Mr.Yang.mongodb.service.ProductDetailService;
 
+import info.Mr.Yang.mongodb.dto.Skus;
 import info.Mr.Yang.mongodb.model.ProductDetail.Sku;
 
 import java.util.List;
@@ -67,5 +68,7 @@ public interface SkuService {
      * @return
      */
     void update(String id, Map<String, Object> updateFieldMap);
+
+    Skus fillById(String id);
 
 }

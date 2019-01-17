@@ -32,6 +32,9 @@ public class Product {
     @ApiModelProperty(value = "商品图片地址")
     private String imageURL;
 
+    @ApiModelProperty(value = "商品详情的id")
+    private String goods_id;
+
     public void setId(int id) {
         this.id = id;
     }
@@ -46,6 +49,14 @@ public class Product {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public void setGoods_id(String goods_id) {
+        this.goods_id = goods_id;
+    }
+
+    public String getGoods_id() {
+        return goods_id;
     }
 
     public int getId() {

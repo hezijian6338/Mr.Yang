@@ -1,28 +1,20 @@
-package info.Mr.Yang.mongodb.model.ProductDetail;
+package info.Mr.Yang.mongodb.dto;
 
+import info.Mr.Yang.mongodb.model.ProductDetail.GoodsPromise;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
 import org.springframework.data.annotation.Id;
 
 import java.util.List;
 
 /**
  * @program: Shop
- * @description: 商品详情
+ * @description: 产品详细全资料
  * @author: hezijian6338
- * @create: 2019-01-16 15:07
+ * @create: 2019-01-17 16:33
  **/
 
-@Data
-@ToString(callSuper = false)
-@NoArgsConstructor
-@AllArgsConstructor
-public class Goods {
+public class Goodss {
 
-    @Id
     private String id;
 
     @ApiModelProperty(value = "产品id,关联产品的id")
@@ -53,10 +45,10 @@ public class Goods {
     private String info;
 
     @ApiModelProperty(value = "提供服务的详情")
-    private List<String> goodsPromises;
+    private List<GoodsPromise> goodsPromises;
 
     @ApiModelProperty(value = "放商品规格详情")
-    private String sku_id;
+    private Skus sku;
 
     public void setId(String id) {
         this.id = id;
@@ -86,7 +78,7 @@ public class Goods {
         this.express = express;
     }
 
-    public void setGoodsPromises(List<String> goodsPromises) {
+    public void setGoodsPromises(List<GoodsPromise> goodsPromises) {
         this.goodsPromises = goodsPromises;
     }
 
@@ -98,8 +90,8 @@ public class Goods {
         this.remain = remain;
     }
 
-    public void setSku_id(String sku_id) {
-        this.sku_id = sku_id;
+    public void setSku_id(Skus sku) {
+        this.sku = sku;
     }
 
     public void setSubtitle(String subtitle) {
@@ -138,7 +130,7 @@ public class Goods {
         return remain;
     }
 
-    public List<String> getGoodsPromises() {
+    public List<GoodsPromise> getGoodsPromises() {
         return goodsPromises;
     }
 
@@ -146,8 +138,8 @@ public class Goods {
         return thumb;
     }
 
-    public String getSku_id() {
-        return sku_id;
+    public Skus getSku() {
+        return sku;
     }
 
     public String getSubtitle() {

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -50,7 +51,11 @@ public class SkuListServiceImpl implements SkuListService {
 
     @Override
     public List<SkuList> findByIds(List<String> Ids) {
-        return null;
+        List<SkuList> skuLists = new ArrayList<>();
+        for (String id : Ids) {
+            skuLists.add(this.findById(id));
+        }
+        return skuLists;
     }
 
     @Override

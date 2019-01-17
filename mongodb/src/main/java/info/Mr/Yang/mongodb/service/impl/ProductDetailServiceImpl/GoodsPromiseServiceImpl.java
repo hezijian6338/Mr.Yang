@@ -2,11 +2,13 @@ package info.Mr.Yang.mongodb.service.impl.ProductDetailServiceImpl;
 
 import info.Mr.Yang.mongodb.dao.ProductDetailDao.GoodsPromiseDao;
 import info.Mr.Yang.mongodb.model.ProductDetail.GoodsPromise;
+import info.Mr.Yang.mongodb.model.ProductDetail.SkuDetail.Tree;
 import info.Mr.Yang.mongodb.service.ProductDetailService.GoodsPromiseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -50,7 +52,11 @@ public class GoodsPromiseServiceImpl implements GoodsPromiseService {
 
     @Override
     public List<GoodsPromise> findByIds(List<String> Ids) {
-        return null;
+        List<GoodsPromise> goodsPromises = new ArrayList<>();
+        for (String id : Ids) {
+            goodsPromises.add(this.findById(id));
+        }
+        return goodsPromises;
     }
 
     @Override

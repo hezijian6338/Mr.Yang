@@ -1,5 +1,6 @@
 package info.Mr.Yang.mongodb.service.ProductDetailService;
 
+import info.Mr.Yang.mongodb.dto.Goodss;
 import info.Mr.Yang.mongodb.model.ProductDetail.Goods;
 
 import java.util.List;
@@ -67,5 +68,7 @@ public interface GoodsService {
      * @return
      */
     void update(String id, Map<String, Object> updateFieldMap);
+
+    Goodss fillById(String id);
 
 }
