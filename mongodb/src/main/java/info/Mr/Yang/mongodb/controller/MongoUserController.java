@@ -143,7 +143,7 @@ public class MongoUserController {
     }
 
     @RequestMapping(value = "img/{fileName}", method = RequestMethod.GET)
-    public byte[] get(@PathVariable("fileName") String fileName, @RequestParam(value = "w") int w) throws IOException {
+    public byte[] get(@PathVariable("fileName") String fileName, @RequestParam(value = "w", required = false, defaultValue = "375") int w) throws IOException {
         // LOGGER.info("Getting file.." + fileName);
         GridFSFindIterable result = gridFsTemplate
                 .find(new Query().addCriteria(Criteria.where("filename").is(fileName)));
