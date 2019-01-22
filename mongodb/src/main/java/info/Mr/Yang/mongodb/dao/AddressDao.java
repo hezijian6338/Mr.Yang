@@ -12,6 +12,6 @@ import org.springframework.stereotype.Repository;
  **/
 
 @Repository
-public interface AddressDao extends BaseDao<Address, Long> {
+public interface AddressDao extends BaseDao<Address, String> {
 
 }

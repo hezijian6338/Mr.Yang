@@ -43,13 +43,13 @@ public class PageServiceImpl implements PageService {
     }
 
     @Override
-    public Page findById(Long id) {
+    public Page findById(String id) {
         Optional<Page> optionalPage = dao.findById(id);
         return optionalPage.orElse(null);
     }
 
     @Override
-    public Pages findSById(Long id) {
+    public Pages findSById(String id) {
         Page page = this.findById(id);
         Pages pages = new Pages();
         pages.setId(page.getId());
@@ -65,7 +65,7 @@ public class PageServiceImpl implements PageService {
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(String id) {
         Optional<Page> optional = dao.findById(id);
         if (!optional.isPresent()) {
             return;
@@ -75,6 +75,6 @@ public class PageServiceImpl implements PageService {
 
     @Override
     public void update(Page page) {
-        dao.update((long)page.getId(), page);
+        dao.update(page.getId(), page);
     }
 }

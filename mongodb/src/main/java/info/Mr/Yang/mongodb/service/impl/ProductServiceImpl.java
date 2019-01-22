@@ -50,7 +50,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product findById(Long id) {
+    public Product findById(String id) {
         Optional<Product> optionalProduct = dao.findById(id);
         return optionalProduct.orElse(null);
     }
@@ -61,7 +61,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(String id) {
         Optional<Product> optional = dao.findById(id);
         if (!optional.isPresent()) {
             return;
@@ -70,7 +70,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void update(Long id, Map<String, Object> updateFieldMap) {
+    public void update(String id, Map<String, Object> updateFieldMap) {
         dao.update(id, updateFieldMap);
     }
 }

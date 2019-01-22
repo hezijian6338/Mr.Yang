@@ -21,7 +21,7 @@ import org.springframework.data.annotation.Id;
 public class Image {
 
     @Id
-    private int id;
+    private String id;
 
 //    @ApiModelProperty(value = "与栏目PageSectionId关联的字段")
 //    private int pageSectionId;
@@ -42,7 +42,7 @@ public class Image {
 //        this.pageSectionId = pageSectionId;
 //    }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -66,7 +66,7 @@ public class Image {
 //        return pageSectionId;
 //    }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 

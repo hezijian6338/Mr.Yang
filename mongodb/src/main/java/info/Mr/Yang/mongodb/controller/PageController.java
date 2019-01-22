@@ -38,14 +38,14 @@ public class PageController {
     }
 
     @RequestMapping(value = "get/{id}", method = RequestMethod.GET)
-    public Result get(@PathVariable("id") Long id) {
+    public Result get(@PathVariable("id") String id) {
         Page page = service.findById(id);
         return new Result<>(page);
     }
 
     @ApiOperation(value = "获取最终Page格式参数")
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
-    public Result getPages(@PathVariable("id") Long id) {
+    public Result getPages(@PathVariable("id") String id) {
         Pages pages = service.findSById(id);
         return new Result<>(pages);
     }
@@ -64,7 +64,7 @@ public class PageController {
     
 
     @RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
-    public Result delete(@PathVariable("id") Long id) {
+    public Result delete(@PathVariable("id") String id) {
         service.delete(id);
         return new Result(CodeConst.SUCCESS.getResultCode(), CodeConst.SUCCESS.getMessage());
     }

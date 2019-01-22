@@ -35,9 +35,9 @@ public interface PageService {
      * @param id
      * @return
      */
-    Page findById(Long id);
+    Page findById(String id);
 
-    Pages findSById(Long id);
+    Pages findSById(String id);
 
     /**
      * 添加
@@ -52,7 +52,7 @@ public interface PageService {
      *
      * @param id
      */
-    void delete(Long id);
+    void delete(String id);
 
     /**
      * 更新

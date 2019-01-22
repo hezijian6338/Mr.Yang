@@ -37,7 +37,7 @@ public interface ParameterDictionaryService {
      * @param id
      * @return
      */
-    ParameterDictionary findById(Long id);
+    ParameterDictionary findById(String id);
 
     /**
      * 添加
@@ -52,7 +52,7 @@ public interface ParameterDictionaryService {
      *
      * @param id
      */
-    void delete(Long id);
+    void delete(String id);
 
     /**
      * 更新
@@ -60,10 +60,10 @@ public interface ParameterDictionaryService {
      * @param id, updateFieldMap
      * @return
      */
-    void update(Long id, Map<String, Object> updateFieldMap);
+    void update(String id, Map<String, Object> updateFieldMap);
 
     List<Image> findImage(List<String> ids);
 
-    ParameterDictionarys findPdsById(Long id);
+    ParameterDictionarys findPdsById(String id);
 
 }

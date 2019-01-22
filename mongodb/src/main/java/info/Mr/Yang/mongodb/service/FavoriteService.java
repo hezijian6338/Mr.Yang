@@ -36,7 +36,7 @@ public interface FavoriteService {
      * @param id
      * @return
      */
-    Favorite findById(Long id);
+    Favorite findById(String id);
 
 
     /**
@@ -52,7 +52,7 @@ public interface FavoriteService {
      *
      * @param id
      */
-    void delete(Long id);
+    void delete(String id);
 
     /**
      * 更新
@@ -62,6 +62,6 @@ public interface FavoriteService {
      */
     Favorite update(Favorite Favorite);
 
-    Favorites findProductById(Long id);
+    Favorites findProductById(String id);
 
 }

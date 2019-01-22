@@ -39,7 +39,7 @@ public class FavoriteController {
     }
 
     @RequestMapping(value = "get/{id}", method = RequestMethod.GET)
-    public Result get(@PathVariable("id") Long id) {
+    public Result get(@PathVariable("id") String id) {
         Favorite favorite = service.findById(id);
         return new Result<>(favorite);
     }
@@ -64,7 +64,7 @@ public class FavoriteController {
     
 
     @RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
-    public Result delete(@PathVariable("id") Long id) {
+    public Result delete(@PathVariable("id") String id) {
         service.delete(id);
         return new Result(CodeConst.SUCCESS.getResultCode(), CodeConst.SUCCESS.getMessage());
     }

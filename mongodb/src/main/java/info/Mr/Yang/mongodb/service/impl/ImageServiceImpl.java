@@ -40,7 +40,7 @@ public class ImageServiceImpl implements ImageService {
     }
 
     @Override
-    public Image findById(Long id) {
+    public Image findById(String id) {
         Optional<Image> optionalSection = dao.findById(id);
         return optionalSection.orElse(null);
     }
@@ -49,7 +49,7 @@ public class ImageServiceImpl implements ImageService {
     public List<Image> findByIds(List<String> ids){
         List<Image> images = new ArrayList<>();
         for (String id : ids) {
-            images.add(this.findById(Long.parseLong(id)));
+            images.add(this.findById(id));
         }
         return images;
     }
@@ -60,7 +60,7 @@ public class ImageServiceImpl implements ImageService {
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(String id) {
         Optional<Image> optional = dao.findById(id);
         if (!optional.isPresent()) {
             return;
@@ -69,7 +69,7 @@ public class ImageServiceImpl implements ImageService {
     }
 
     @Override
-    public void update(Long id, Map<String, Object> updateFieldMap) {
+    public void update(String id, Map<String, Object> updateFieldMap) {
         dao.update(id, updateFieldMap);
     }
 }

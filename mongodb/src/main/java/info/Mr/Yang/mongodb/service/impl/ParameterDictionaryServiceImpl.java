@@ -49,7 +49,7 @@ public class ParameterDictionaryServiceImpl implements ParameterDictionaryServic
     }
 
     @Override
-    public ParameterDictionary findById(Long id) {
+    public ParameterDictionary findById(String id) {
         Optional<ParameterDictionary> optionalParameterDictionary = dao.findById(id);
         return optionalParameterDictionary.orElse(null);
     }
@@ -61,7 +61,7 @@ public class ParameterDictionaryServiceImpl implements ParameterDictionaryServic
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(String id) {
         Optional<ParameterDictionary> optional = dao.findById(id);
         if (!optional.isPresent()) {
             return;
@@ -70,7 +70,7 @@ public class ParameterDictionaryServiceImpl implements ParameterDictionaryServic
     }
 
     @Override
-    public void update(Long id, Map<String, Object> updateFieldMap) {
+    public void update(String id, Map<String, Object> updateFieldMap) {
         dao.update(id, updateFieldMap);
     }
 
@@ -83,7 +83,7 @@ public class ParameterDictionaryServiceImpl implements ParameterDictionaryServic
     }
 
     @Override
-    public ParameterDictionarys findPdsById(Long id) {
+    public ParameterDictionarys findPdsById(String id) {
         ParameterDictionary pd = this.findById(id);
         ParameterDictionarys pds = new ParameterDictionarys();
         pds.setImagelist(this.findImage(pd.getImage()));

@@ -15,7 +15,7 @@ import java.util.List;
 
 public class Pages {
 
-    private int id;
+    private String id;
 
     @ApiModelProperty(value = "主页名称")
     private String name;
@@ -26,7 +26,7 @@ public class Pages {
     @ApiModelProperty(value = "主页栏目")
     private List<Sections> sections;
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -42,7 +42,7 @@ public class Pages {
         this.sections = sections;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 

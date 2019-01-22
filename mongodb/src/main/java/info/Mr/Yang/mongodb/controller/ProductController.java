@@ -41,7 +41,7 @@ public class ProductController {
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
-    public Result get(@PathVariable("id") Long id) {
+    public Result get(@PathVariable("id") String id) {
         Product product = service.findById(id);
         return new Result<>(product);
     }
@@ -63,14 +63,14 @@ public class ProductController {
     
 
     @RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
-    public Result delete(@PathVariable("id") Long id) {
+    public Result delete(@PathVariable("id") String id) {
         service.delete(id);
         return new Result(CodeConst.SUCCESS.getResultCode(), CodeConst.SUCCESS.getMessage());
     }
 
     @ApiOperation(value = "根据id更新具体的键值对")
     @RequestMapping(value = "{id}", method = RequestMethod.PATCH)
-    public Result update(@PathVariable("id") Long id, @RequestBody Map updateFieldMap) {
+    public Result update(@PathVariable("id") String id, @RequestBody Map updateFieldMap) {
         service.update(id, updateFieldMap);
         return new Result(CodeConst.SUCCESS.getResultCode(), CodeConst.SUCCESS.getMessage());
     }

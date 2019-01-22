@@ -39,7 +39,7 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public Address findById(Long id) {
+    public Address findById(String id) {
         Optional<Address> optionalAddress = dao.findById(id);
         return optionalAddress.orElse(null);
     }
@@ -48,7 +48,7 @@ public class AddressServiceImpl implements AddressService {
     public List<Address> findByIds(List<String> Ids) {
         List<Address> addresses = new ArrayList<>();
         for (String id : Ids) {
-            addresses.add(this.findById(Long.parseLong(id)));
+            addresses.add(this.findById(id));
         }
         return addresses;
     }
@@ -60,7 +60,7 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(String id) {
         Optional<Address> optional = dao.findById(id);
         if (!optional.isPresent()) {
             return;
@@ -70,6 +70,6 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public void update(Address address) {
-        dao.update((long)address.getId(), address);
+        dao.update(address.getId(), address);
     }
 }

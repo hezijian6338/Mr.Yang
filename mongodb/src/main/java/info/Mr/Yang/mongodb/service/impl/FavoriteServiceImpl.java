@@ -45,7 +45,7 @@ public class FavoriteServiceImpl implements FavoriteService {
     }
 
     @Override
-    public Favorite findById(Long id) {
+    public Favorite findById(String id) {
         Optional<Favorite> optionalFavorite = dao.findById(id);
         return optionalFavorite.orElse(null);
     }
@@ -56,7 +56,7 @@ public class FavoriteServiceImpl implements FavoriteService {
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(String id) {
         Optional<Favorite> optional = dao.findById(id);
         if (!optional.isPresent()) {
             return;
@@ -70,13 +70,13 @@ public class FavoriteServiceImpl implements FavoriteService {
     }
 
     @Override
-    public Favorites findProductById(Long id) {
+    public Favorites findProductById(String id) {
         Favorite favorite = this.findById(id);
         Favorites favorites = new Favorites();
         favorites.setId(favorite.getId());
         List<Product> products = new ArrayList<>();
         for (String p_id : favorite.getProduct_id()) {
-            products.add(productService.findById(Long.parseLong(p_id)));
+            products.add(productService.findById(p_id));
         }
         favorites.setProduct(products);
         return favorites;

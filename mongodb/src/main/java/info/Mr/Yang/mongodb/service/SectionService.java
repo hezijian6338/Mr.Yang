@@ -35,7 +35,7 @@ public interface SectionService {
      * @param id
      * @return
      */
-    Section findById(Long id);
+    Section findById(String id);
 
     List<Sections> findByIds(List<String> ids);
 
@@ -52,7 +52,7 @@ public interface SectionService {
      *
      * @param id
      */
-    void delete(Long id);
+    void delete(String id);
 
     /**
      * 更新
@@ -62,6 +62,6 @@ public interface SectionService {
      */
     void update(Section Section);
 
-    Sections findPD(Long id);
+    Sections findPD(String id);
 
 }

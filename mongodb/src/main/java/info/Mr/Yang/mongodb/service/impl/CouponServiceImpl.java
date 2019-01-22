@@ -39,7 +39,7 @@ public class CouponServiceImpl implements CouponService {
     }
 
     @Override
-    public Coupon findById(Long id) {
+    public Coupon findById(String id) {
         Optional<Coupon> optionalCoupon = dao.findById(id);
         return optionalCoupon.orElse(null);
     }
@@ -48,7 +48,7 @@ public class CouponServiceImpl implements CouponService {
     public List<Coupon> findByIds(List<String> ids) {
         List<Coupon> coupons = new ArrayList<>();
         for (String id : ids) {
-            coupons.add(this.findById(Long.parseLong(id)));
+            coupons.add(this.findById(id));
         }
         return coupons;
     }
@@ -59,7 +59,7 @@ public class CouponServiceImpl implements CouponService {
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(String id) {
         Optional<Coupon> optional = dao.findById(id);
         if (!optional.isPresent()) {
             return;

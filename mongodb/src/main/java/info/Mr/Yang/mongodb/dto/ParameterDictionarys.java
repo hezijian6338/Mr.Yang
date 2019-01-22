@@ -15,7 +15,7 @@ import java.util.List;
 
 public class ParameterDictionarys {
 
-    private int id;
+    private String id;
 
     @ApiModelProperty(value = "用来关联栏目的id(PageSectionId)")
     private int pageSectionId;
@@ -77,7 +77,7 @@ public class ParameterDictionarys {
     @ApiModelProperty(value = "有待研究")
     private String productids;
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -161,7 +161,7 @@ public class ParameterDictionarys {
         this.imagelist = imagelist;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 

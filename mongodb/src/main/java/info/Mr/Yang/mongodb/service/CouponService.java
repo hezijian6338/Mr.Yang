@@ -34,7 +34,7 @@ public interface CouponService {
      * @param id
      * @return
      */
-    Coupon findById(Long id);
+    Coupon findById(String id);
 
     /**
      * 根据ids查
@@ -57,7 +57,7 @@ public interface CouponService {
      *
      * @param id
      */
-    void delete(Long id);
+    void delete(String id);
 
     /**
      * 更新

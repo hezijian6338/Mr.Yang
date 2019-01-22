@@ -23,7 +23,7 @@ import java.util.List;
 public class User {
 
     @Id
-    private int id;
+    private String id;
 
     @ApiModelProperty(value = "用户名称")
     private String userName;
@@ -49,7 +49,7 @@ public class User {
     @ApiModelProperty(value = "收货地址的关联id")
     private List<String> addressList_id;
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -101,7 +101,7 @@ public class User {
         return favorite_id;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 

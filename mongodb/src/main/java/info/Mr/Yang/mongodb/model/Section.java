@@ -22,18 +22,18 @@ import org.springframework.data.annotation.Id;
 public class Section {
 
     @Id
-    private int id;
+    private String id;
 
-    @ApiModelProperty(value = "关联页面的栏目id(唯一),也用来关联栏目内容的id(唯一)")
+    @ApiModelProperty(value = "页面的栏目id")
     private int pageSectionId;
 
     @ApiModelProperty(value = "pd的id,因为发现psid不唯一")
-    private int pd_id;
+    private String pd_id;
 
     @ApiModelProperty(value = "栏目代码")
     private String code;
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -45,11 +45,11 @@ public class Section {
         this.pageSectionId = pageSectionId;
     }
 
-    public void setPd_id(int pd_id) {
+    public void setPd_id(String pd_id) {
         this.pd_id = pd_id;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -57,7 +57,7 @@ public class Section {
         return pageSectionId;
     }
 
-    public int getPd_id() {
+    public String getPd_id() {
         return pd_id;
     }
 

@@ -37,7 +37,7 @@ public interface ProductService {
      * @param id
      * @return
      */
-    Product findById(Long id);
+    Product findById(String id);
 
     /**
      * 添加
@@ -52,14 +52,14 @@ public interface ProductService {
      *
      * @param id
      */
-    void delete(Long id);
+    void delete(String id);
 
     /**
      * 更新
      *
-     * @param Product
+     * @param id, updateFieldMap
      * @return
      */
-    void update(Long id, Map<String, Object> updateFieldMap);
+    void update(String id, Map<String, Object> updateFieldMap);
 
 }

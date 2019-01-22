@@ -12,6 +12,6 @@ import org.springframework.stereotype.Repository;
  **/
 
 @Repository
-public interface ParameterDictionaryDao extends BaseDao<ParameterDictionary, Long> {
+public interface ParameterDictionaryDao extends BaseDao<ParameterDictionary, String> {
 
 }

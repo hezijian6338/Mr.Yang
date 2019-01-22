@@ -21,7 +21,7 @@ import org.springframework.data.annotation.Id;
 public class Product {
 
     @Id
-    private int id;
+    private String id;
 
     @ApiModelProperty(value = "标题")
     private String title;
@@ -35,7 +35,7 @@ public class Product {
     @ApiModelProperty(value = "商品详情的id")
     private String goods_id;
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -59,7 +59,7 @@ public class Product {
         return goods_id;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 

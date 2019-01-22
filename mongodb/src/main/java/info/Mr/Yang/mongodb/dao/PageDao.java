@@ -12,6 +12,6 @@ import org.springframework.stereotype.Repository;
  **/
 
 @Repository
-public interface PageDao extends BaseDao<Page, Long> {
+public interface PageDao extends BaseDao<Page, String> {
 
 }

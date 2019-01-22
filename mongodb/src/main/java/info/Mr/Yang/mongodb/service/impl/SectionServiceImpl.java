@@ -46,7 +46,7 @@ public class SectionServiceImpl implements SectionService {
     }
 
     @Override
-    public Section findById(Long id) {
+    public Section findById(String id) {
         Optional<Section> optionalSection = dao.findById(id);
         return optionalSection.orElse(null);
     }
@@ -55,8 +55,8 @@ public class SectionServiceImpl implements SectionService {
     public List<Sections> findByIds(List<String> ids) {
         List<Sections> sections_list = new ArrayList<>();
         for (String id : ids) {
-            Section section = this.findById(Long.parseLong(id));
-            Sections sections = this.findPD((long)section.getPd_id());
+            Section section = this.findById(id);
+            Sections sections = this.findPD(section.getPd_id());
             sections.setCode(section.getCode());
             sections.setId(section.getId());
             sections.setPageSectionId(section.getPageSectionId());
@@ -71,7 +71,7 @@ public class SectionServiceImpl implements SectionService {
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(String id) {
         Optional<Section> optional = dao.findById(id);
         if (!optional.isPresent()) {
             return;
@@ -81,11 +81,11 @@ public class SectionServiceImpl implements SectionService {
 
     @Override
     public void update(Section section) {
-        dao.update((long)section.getId(), section);
+        dao.update(section.getId(), section);
     }
 
     @Override
-    public Sections findPD(Long id) {
+    public Sections findPD(String id) {
         Sections sections = new Sections();
         sections.setParameterDictionary(parameterDictionaryService.findPdsById(id));
         return sections;

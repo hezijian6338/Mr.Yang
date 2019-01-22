@@ -11,7 +11,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class UserIndex {
 
-    private int id;
+    private String id;
 
     @ApiModelProperty(value = "用户名称")
     private String userName;
@@ -28,7 +28,7 @@ public class UserIndex {
     @ApiModelProperty(value = "售后")
     private int afterSaleTotal;
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -52,7 +52,7 @@ public class UserIndex {
         this.userName = userName;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 

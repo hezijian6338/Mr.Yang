@@ -37,7 +37,7 @@ public interface UserService {
      * @param id
      * @return
      */
-    User findById(Long id);
+    User findById(String id);
 
     /**
      * 根据id查
@@ -45,7 +45,7 @@ public interface UserService {
      * @param id
      * @return UserIndex
      */
-    UserIndex findById_UserIndex(Long id);
+    UserIndex findById_UserIndex(String id);
 
     /**
      * 添加
@@ -60,7 +60,7 @@ public interface UserService {
      *
      * @param id
      */
-    void delete(Long id);
+    void delete(String id);
 
     /**
      * 更新
@@ -70,8 +70,8 @@ public interface UserService {
      */
     void update(User User);
 
-    void update(Long id, Map<String, Object> updateFieldMap);
+    void update(String id, Map<String, Object> updateFieldMap);
 
-    UserDTO findUserById(Long id);
+    UserDTO findUserById(String id);
 
 }

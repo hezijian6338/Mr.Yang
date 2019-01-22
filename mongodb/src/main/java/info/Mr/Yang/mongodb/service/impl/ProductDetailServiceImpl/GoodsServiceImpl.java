@@ -3,6 +3,7 @@ package info.Mr.Yang.mongodb.service.impl.ProductDetailServiceImpl;
 import info.Mr.Yang.mongodb.dao.ProductDetailDao.GoodsDao;
 import info.Mr.Yang.mongodb.dto.Goodss;
 import info.Mr.Yang.mongodb.model.ProductDetail.Goods;
+import info.Mr.Yang.mongodb.model.ProductDetail.GoodsInfo;
 import info.Mr.Yang.mongodb.service.ProductDetailService.GoodsPromiseService;
 import info.Mr.Yang.mongodb.service.ProductDetailService.GoodsService;
 import info.Mr.Yang.mongodb.service.ProductDetailService.SkuService;
@@ -60,19 +61,17 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public Goodss fillById(String id) {
         Goodss goodss = new Goodss();
+        GoodsInfo goodsInfo = new GoodsInfo();
+
         Goods goods = this.findById(id);
         goodss.setGoodsPromises(goodsPromiseService.findByIds(goods.getGoodsPromises()));
-        goodss.setTitle(goods.getTitle());
-        goodss.setThumb(goods.getThumb());
-        goodss.setSubtitle(goods.getSubtitle());
-        goodss.setSku_id(skuService.fillById(goods.getSku_id()));
-        goodss.setRemain(goods.getRemain());
-        goodss.setProduct_id(goods.getProduct_id());
-        goodss.setPrice(goods.getPrice());
-        goodss.setMarket_price(goods.getMarket_price());
-        goodss.setInfo(goods.getInfo());
-        goodss.setExpress(goods.getExpress());
+        goodss.setSku(skuService.fillById(goods.getSku_id()));
+        goodss.setGoods(goods);
         goodss.setId(goods.getId());
+        goodsInfo.setId(goodss.getSku().getList().get(0).getId());
+        goodsInfo.setPicture(goods.getThumb().get(0));
+        goodsInfo.setTitle("请选择商品");
+        goodss.setGoodsInfo(goodsInfo);
         return goodss;
     }
 

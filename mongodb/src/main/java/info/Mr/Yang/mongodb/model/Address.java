@@ -21,7 +21,7 @@ import org.springframework.data.annotation.Id;
 public class Address {
 
     @Id
-    private int id;
+    private String id;
 
     @ApiModelProperty(value = "用户姓名")
     private String name;
@@ -32,7 +32,7 @@ public class Address {
     @ApiModelProperty(value = "用户地址")
     private String address;
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -48,7 +48,7 @@ public class Address {
         this.tel = tel;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 

@@ -17,7 +17,7 @@ import java.util.List;
 
 public class UserDTO {
 
-    private int id;
+    private String id;
 
     @ApiModelProperty(value = "用户名称")
     private String userName;
@@ -43,7 +43,7 @@ public class UserDTO {
     @ApiModelProperty(value = "收货地址")
     private List<Address> addressList;
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -79,7 +79,7 @@ public class UserDTO {
         this.favorite = favorite;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 

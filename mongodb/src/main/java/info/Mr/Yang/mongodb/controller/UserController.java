@@ -58,7 +58,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
-    public Result get(@PathVariable("id") Long id) {
+    public Result get(@PathVariable("id") String id) {
         // User user = service.findById(id);
         UserIndex user = service.findById_UserIndex(id);
         return new Result<>(user);
@@ -66,14 +66,14 @@ public class UserController {
 
     @ApiOperation(value = "根据用户id获取收藏夹内容")
     @RequestMapping(value = "{id}/favorites", method = RequestMethod.GET)
-    public Result getUserFavorites(@ApiParam(required = true, name = "id", value = "填写用户的id") @PathVariable("id") Long id) {
+    public Result getUserFavorites(@ApiParam(required = true, name = "id", value = "填写用户的id") @PathVariable("id") String id) {
         Favorites favorites = favoriteService.findProductById(id);
         return new Result<>(favorites);
     }
 
     @ApiOperation(value = "根据用户id获取收货地址")
     @RequestMapping(value = "{id}/addresses", method = RequestMethod.GET)
-    public Result getUserAddresses(@ApiParam(required = true, name = "id", value = "填写用户的id")@PathVariable("id") Long id) {
+    public Result getUserAddresses(@ApiParam(required = true, name = "id", value = "填写用户的id")@PathVariable("id") String id) {
         User user = service.findById(id);
         List<Address> addresses = addressService.findByIds(user.getAddressList_id());
         return new Result<>(addresses);
@@ -81,7 +81,7 @@ public class UserController {
 
     @ApiOperation(value = "根据用户id获取优惠券")
     @RequestMapping(value = "{id}/coupons", method = RequestMethod.GET)
-    public Result getUserCoupons(@ApiParam(required = true, name = "id", value = "填写用户的id")@PathVariable("id") Long id) {
+    public Result getUserCoupons(@ApiParam(required = true, name = "id", value = "填写用户的id")@PathVariable("id") String id) {
         User user = service.findById(id);
         List<Coupon> Coupon = couponService.findByIds(user.getCoupon_id());
         return new Result<>(Coupon);
@@ -101,7 +101,7 @@ public class UserController {
 
 
     @RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
-    public Result delete(@PathVariable("id") Long id) {
+    public Result delete(@PathVariable("id") String id) {
         service.delete(id);
         return new Result(CodeConst.SUCCESS.getResultCode(), CodeConst.SUCCESS.getMessage());
     }
@@ -115,7 +115,7 @@ public class UserController {
 
     @ApiOperation(value = "根据id更新具体的键值对")
     @RequestMapping(value = "{id}", method = RequestMethod.PATCH)
-    public Result update(@PathVariable("id") Long id, @RequestBody Map updateFieldMap) {
+    public Result update(@PathVariable("id") String id, @RequestBody Map updateFieldMap) {
         service.update(id, updateFieldMap);
         return new Result(CodeConst.SUCCESS.getResultCode(), CodeConst.SUCCESS.getMessage());
     }

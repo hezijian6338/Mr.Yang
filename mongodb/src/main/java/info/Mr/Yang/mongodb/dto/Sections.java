@@ -15,7 +15,7 @@ import java.util.List;
 
 public class Sections {
 
-    private int id;
+    private String id;
 
     @ApiModelProperty(value = "关联页面的栏目id(唯一),也用来关联栏目内容的id(唯一)")
     private int pageSectionId;
@@ -26,7 +26,7 @@ public class Sections {
     @ApiModelProperty(value = "栏目详情")
     private ParameterDictionarys parameterDictionary;
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -42,7 +42,7 @@ public class Sections {
         this.parameterDictionary = parameterDictionary;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 

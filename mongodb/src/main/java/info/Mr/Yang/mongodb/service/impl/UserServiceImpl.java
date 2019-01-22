@@ -48,13 +48,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findById(Long id) {
+    public User findById(String id) {
         Optional<User> optionalUser = dao.findById(id);
         return optionalUser.orElse(null);
     }
 
     @Override
-    public UserIndex findById_UserIndex(Long id) {
+    public UserIndex findById_UserIndex(String id) {
         User user = this.findById(id);
         UserIndex userIndex = new UserIndex();
         userIndex.setId(user.getId());
@@ -72,7 +72,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(String id) {
         Optional<User> optional = dao.findById(id);
         if (!optional.isPresent()) {
             return;
@@ -82,17 +82,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void update(User User) {
-        dao.update((long)User.getId(), User);
+        dao.update(User.getId(), User);
     }
 
     @Override
-    public void update(Long id, Map<String, Object> updateFieldMap) {
+    public void update(String id, Map<String, Object> updateFieldMap) {
         dao.update(id, updateFieldMap);
     }
 
 
     @Override
-    public UserDTO findUserById(Long id) {
+    public UserDTO findUserById(String id) {
         User user = this.findById(id);
         UserDTO userDTO = new UserDTO();
         userDTO.setId(user.getId());
@@ -103,14 +103,14 @@ public class UserServiceImpl implements UserService {
         userDTO.setUserName(user.getUserName());
         List<Address> addresses = new ArrayList<>();
         for (String address_id : user.getAddressList_id()) {
-            Address address = addressService.findById(Long.parseLong(address_id));
+            Address address = addressService.findById(address_id);
             addresses.add(address);
         }
         userDTO.setAddressList(addresses);
 
         List<Coupon> coupons = new ArrayList<>();
         for (String coupon_id : user.getCoupon_id()) {
-            Coupon coupon = couponService.findById(Long.parseLong(coupon_id));
+            Coupon coupon = couponService.findById(coupon_id);
             coupons.add(coupon);
         }
         userDTO.setCoupon(coupons);

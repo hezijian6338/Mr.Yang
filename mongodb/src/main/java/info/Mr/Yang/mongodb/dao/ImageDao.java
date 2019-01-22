@@ -13,6 +13,6 @@ import org.springframework.stereotype.Repository;
  **/
 
 @Repository
-public interface ImageDao extends BaseDao<Image, Long> {
+public interface ImageDao extends BaseDao<Image, String> {
 
 }

@@ -12,6 +12,6 @@ import org.springframework.stereotype.Repository;
  **/
 
 @Repository
-public interface SectionDao extends BaseDao<Section, Long> {
+public interface SectionDao extends BaseDao<Section, String> {
 
 }

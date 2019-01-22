@@ -22,7 +22,7 @@ import org.springframework.data.annotation.Id;
 public class Coupon {
 
     @Id
-    private int id;
+    private String id;
 
     @ApiModelProperty(value = "优惠券的名字")
     private String name;
@@ -48,7 +48,7 @@ public class Coupon {
     @ApiModelProperty(value = "使用详情/资料")
     private String info;
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -84,7 +84,7 @@ public class Coupon {
         this.signPosition = signPosition;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 

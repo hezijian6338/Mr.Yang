@@ -15,12 +15,12 @@ import java.util.List;
 
 public class Favorites {
 
-    private int id;
+    private String id;
 
     @ApiModelProperty(value = "收藏夹的商品")
     private List<Product> products;
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -28,7 +28,7 @@ public class Favorites {
         this.products = products;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 

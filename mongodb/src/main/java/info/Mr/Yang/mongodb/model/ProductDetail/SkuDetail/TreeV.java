@@ -1,6 +1,7 @@
 package info.Mr.Yang.mongodb.model.ProductDetail.SkuDetail;
 
 import io.swagger.annotations.ApiModelProperty;
+import org.springframework.data.annotation.Id;
 
 /**
  * @program: Shop
@@ -11,6 +12,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class TreeV {
 
+    @Id
     private String id;
 
     @ApiModelProperty(value = "详情中的名称")

@@ -35,7 +35,7 @@ public interface ImageService {
      * @param id
      * @return
      */
-    Image findById(Long id);
+    Image findById(String id);
 
     List<Image> findByIds(List<String> ids);
 
@@ -52,7 +52,7 @@ public interface ImageService {
      *
      * @param id
      */
-    void delete(Long id);
+    void delete(String id);
 
     /**
      * 更新
@@ -60,6 +60,6 @@ public interface ImageService {
      * @param id, updateFielMap
      * @return
      */
-    void update(Long id, Map<String, Object> updateFieldMap);
+    void update(String id, Map<String, Object> updateFieldMap);
 
 }

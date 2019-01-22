@@ -137,7 +137,7 @@ public class MongoUserController {
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
-        String fileUrl = "http://" + address.getHostAddress() + ":" + port + "/mongo/img/" + newName;
+        String fileUrl = "http://" + address.getHostAddress() + ":" + port + "/mongodb/img/" + newName;
         // LOGGER.info("File return: " + fileName);
         return new Result<>(fileUrl);
     }

@@ -12,6 +12,6 @@ import org.springframework.stereotype.Repository;
  **/
 
 @Repository
-public interface CouponDao extends BaseDao<Coupon, Long> {
+public interface CouponDao extends BaseDao<Coupon, String> {
 
 }

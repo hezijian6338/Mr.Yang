@@ -34,7 +34,7 @@ public interface AddressService {
      * @param id
      * @return
      */
-    Address findById(Long id);
+    Address findById(String id);
 
     /**
      * 根据ids查
@@ -57,7 +57,7 @@ public interface AddressService {
      *
      * @param id
      */
-    void delete(Long id);
+    void delete(String id);
 
     /**
      * 更新
