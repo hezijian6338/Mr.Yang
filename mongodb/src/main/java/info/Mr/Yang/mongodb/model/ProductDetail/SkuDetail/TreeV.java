@@ -1,6 +1,10 @@
 package info.Mr.Yang.mongodb.model.ProductDetail.SkuDetail;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.springframework.data.annotation.Id;
 
 /**
@@ -10,6 +14,10 @@ import org.springframework.data.annotation.Id;
  * @create: 2019-01-16 15:18
  **/
 
+@Data
+@ToString(callSuper = false)
+@NoArgsConstructor
+@AllArgsConstructor
 public class TreeV {
 
     @Id

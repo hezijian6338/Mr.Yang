@@ -70,7 +70,7 @@ public class GoodsServiceImpl implements GoodsService {
         goodss.setId(goods.getId());
         goodsInfo.setId(goodss.getSku().getList().get(0).getId());
         goodsInfo.setPicture(goods.getThumb().get(0));
-        goodsInfo.setTitle("请选择商品");
+        goodsInfo.setTitle(goods.getSubtitle());
         goodss.setGoodsInfo(goodsInfo);
         return goodss;
     }
