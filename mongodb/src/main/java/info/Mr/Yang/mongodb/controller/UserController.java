@@ -5,18 +5,17 @@ import info.Mr.Yang.core.constant.CodeConst;
 import info.Mr.Yang.mongodb.dto.Favorites;
 import info.Mr.Yang.mongodb.dto.UserIndex;
 import info.Mr.Yang.mongodb.model.Address;
+import info.Mr.Yang.mongodb.model.Cart;
 import info.Mr.Yang.mongodb.model.Coupon;
 import info.Mr.Yang.mongodb.model.User;
-import info.Mr.Yang.mongodb.service.AddressService;
-import info.Mr.Yang.mongodb.service.CouponService;
-import info.Mr.Yang.mongodb.service.FavoriteService;
-import info.Mr.Yang.mongodb.service.UserService;
+import info.Mr.Yang.mongodb.service.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -118,6 +117,19 @@ public class UserController {
     public Result update(@PathVariable("id") String id, @RequestBody Map updateFieldMap) {
         service.update(id, updateFieldMap);
         return new Result(CodeConst.SUCCESS.getResultCode(), CodeConst.SUCCESS.getMessage());
+    }
+
+    @ApiOperation(value = "根据用户的id来添加购物车列表")
+    @RequestMapping(value = "{id}/carts", method = RequestMethod.POST)
+    public Result addCarts(@PathVariable("id") String id, @RequestBody List<Cart> carts) {
+        service.addCarts(id, carts);
+        return new Result(CodeConst.SUCCESS.getResultCode(), CodeConst.SUCCESS.getMessage());
+    }
+
+    @ApiOperation(value = "根据用户的id来查询购物车列表")
+    @RequestMapping(value = "{id}/carts", method = RequestMethod.GET)
+    public Result getCarts(@PathVariable("id") String id) {
+        return new Result(service.getCarts(id));
     }
 
 }

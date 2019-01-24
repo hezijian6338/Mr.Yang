@@ -161,7 +161,7 @@ public class MongoUserController {
         int height = img.getHeight();
         float scal = w / width;
         int h = (int) (height * scal);
-        System.out.println("image width: " + width + "; image height: " + height);
+        System.out.println("photo name: " + fileName + ", image width: " + width + "; image height: " + height);
         BufferedImage dimg = new BufferedImage(w, w, img.getType());
         Graphics2D g = dimg.createGraphics();
         g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);

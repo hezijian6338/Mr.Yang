@@ -49,6 +49,9 @@ public class User {
     @ApiModelProperty(value = "收货地址的关联id")
     private List<String> addressList_id;
 
+    @ApiModelProperty(value = "购物车的关联id")
+    private List<String> cart_id;
+
     public void setId(String id) {
         this.id = id;
     }
@@ -85,6 +88,10 @@ public class User {
         this.userName = userName;
     }
 
+    public void setCart_id(List<String> cart_id) {
+        this.cart_id = cart_id;
+    }
+
     public String getAvatar() {
         return avatar;
     }
@@ -119,6 +126,10 @@ public class User {
 
     public String getUserName() {
         return userName;
+    }
+
+    public List<String> getCart_id() {
+        return cart_id;
     }
 
 }

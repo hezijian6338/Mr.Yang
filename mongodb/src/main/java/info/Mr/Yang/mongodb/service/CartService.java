@@ -1,9 +1,6 @@
 package info.Mr.Yang.mongodb.service;
 
-import info.Mr.Yang.mongodb.dto.UserDTO;
-import info.Mr.Yang.mongodb.dto.UserIndex;
 import info.Mr.Yang.mongodb.model.Cart;
-import info.Mr.Yang.mongodb.model.User;
 
 import java.util.List;
 import java.util.Map;
@@ -23,14 +20,16 @@ import java.util.Map;
  **/
 
 
-public interface UserService {
+public interface CartService {
 
     /**
      * 查所有
      *
      * @return
      */
-    List<User> findAll();
+    List<Cart> findAll();
+
+//    SkuList<Cart> findLimit(Long lastId, int PageSize);
 
     /**
      * 根据id查
@@ -38,23 +37,17 @@ public interface UserService {
      * @param id
      * @return
      */
-    User findById(String id);
-
-    /**
-     * 根据id查
-     *
-     * @param id
-     * @return UserIndex
-     */
-    UserIndex findById_UserIndex(String id);
+    Cart findById(String id);
 
     /**
      * 添加
      *
-     * @param User
+     * @param cart
      * @return
      */
-    User add(User User);
+    Cart add(Cart cart);
+
+    List<Cart> adds(List<Cart> carts);
 
     /**
      * 删除
@@ -66,17 +59,9 @@ public interface UserService {
     /**
      * 更新
      *
-     * @param User
+     * @param id, updateFieldMap
      * @return
      */
-    void update(User User);
-
     void update(String id, Map<String, Object> updateFieldMap);
-
-    UserDTO findUserById(String id);
-
-    void addCarts(String id, List<Cart> carts);
-
-    List<Cart> getCarts(String id);
 
 }

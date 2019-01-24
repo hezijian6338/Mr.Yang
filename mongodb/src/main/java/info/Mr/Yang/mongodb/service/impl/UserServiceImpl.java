@@ -8,10 +8,7 @@ import info.Mr.Yang.mongodb.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * 把今天最好的表现当作明天最新的起点．．～
@@ -36,6 +33,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private CouponService couponService;
+
+    @Autowired
+    private CartService cartService;
 
     @Autowired
     public UserServiceImpl(UserDao dao) {
@@ -116,7 +116,30 @@ public class UserServiceImpl implements UserService {
         userDTO.setCoupon(coupons);
 
 
-
         return userDTO;
     }
+
+    @Override
+    public void addCarts(String id, List<Cart> carts) {
+        List<Cart> cartList = cartService.adds(carts);
+        List<String> cart_id = new ArrayList<>();
+        for (Cart cart : cartList) {
+            System.out.println("添加的购物车id: " + cart.getId());
+            cart_id.add(cart.getId());
+        }
+        Map<String, Object> updateUser = new HashMap<>();
+        updateUser.put("cart_id", cart_id);
+        this.update(id, updateUser);
+    }
+
+    @Override
+    public List<Cart> getCarts(String id) {
+        User user = this.findById(id);
+        List<Cart> carts = new ArrayList<>();
+        for (String cart_id : user.getCart_id()) {
+            carts.add(cartService.findById(cart_id));
+        }
+        return carts;
+    }
+
 }
