@@ -23,6 +23,9 @@ public class Cart {
     @Id
     private String id;
 
+    @ApiModelProperty(value = "用户的id")
+    private String user_id;
+
     @ApiModelProperty(value = "标题")
     private String title;
 
@@ -37,6 +40,12 @@ public class Cart {
 
     @ApiModelProperty(value = "购买商品的数量")
     private int quantity;
+
+    @ApiModelProperty(value = "产品的简要信息Product表的id")
+    private String product_id;
+
+    @ApiModelProperty(value = "产品详情中规格信息skuList表的id")
+    private String skuList_id;
 
 //    以下两个先不启用,后续再补上
 
@@ -68,6 +77,30 @@ public class Cart {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public void setProduct_id(String product_id) {
+        this.product_id = product_id;
+    }
+
+    public void setSkuList_id(String skuList_id) {
+        this.skuList_id = skuList_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
+    }
+
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public String getProduct_id() {
+        return product_id;
+    }
+
+    public String getSkuList_id() {
+        return skuList_id;
     }
 
     public int getQuantity() {

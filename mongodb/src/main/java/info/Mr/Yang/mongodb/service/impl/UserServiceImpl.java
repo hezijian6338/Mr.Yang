@@ -5,6 +5,7 @@ import info.Mr.Yang.mongodb.dto.UserDTO;
 import info.Mr.Yang.mongodb.dto.UserIndex;
 import info.Mr.Yang.mongodb.model.*;
 import info.Mr.Yang.mongodb.service.*;
+import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -121,14 +122,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void addCarts(String id, List<Cart> carts) {
-        List<Cart> cartList = cartService.adds(carts);
-        List<String> cart_id = new ArrayList<>();
+        List<String> old_cart = this.findById(id).getCart_id();
+        List<Cart> cartList = cartService.adds(id, carts);
+        // List<String> cart_id = new ArrayList<>();
         for (Cart cart : cartList) {
-            System.out.println("添加的购物车id: " + cart.getId());
-            cart_id.add(cart.getId());
+            if (!old_cart.contains(cart.getId())) {
+                System.out.println("添加的购物车id: " + cart.getId());
+                old_cart.add(cart.getId());
+            } else {
+                System.out.println("已存在购物车的id: " + cart.getId());
+            }
         }
         Map<String, Object> updateUser = new HashMap<>();
-        updateUser.put("cart_id", cart_id);
+        updateUser.put("cart_id", old_cart);
         this.update(id, updateUser);
     }
 

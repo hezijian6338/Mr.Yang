@@ -15,5 +15,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CartDao extends BaseDao<Cart, String> {
 
-
 }

@@ -47,7 +47,7 @@ public interface CartService {
      */
     Cart add(Cart cart);
 
-    List<Cart> adds(List<Cart> carts);
+    List<Cart> adds(String user_id, List<Cart> carts);
 
     /**
      * 删除
@@ -63,5 +63,7 @@ public interface CartService {
      * @return
      */
     void update(String id, Map<String, Object> updateFieldMap);
+
+    String checkExist(String user_id, String product_id, String skuList_id);
 
 }
