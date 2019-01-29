@@ -2,8 +2,11 @@ package info.Mr.Yang.mongodb.service.impl;
 
 import info.Mr.Yang.mongodb.dao.CartDao;
 import info.Mr.Yang.mongodb.dao.ProductDao;
+import info.Mr.Yang.mongodb.dao.ProductDetailDao.SkuDetail.TreeVDao;
 import info.Mr.Yang.mongodb.model.Cart;
 import info.Mr.Yang.mongodb.model.Product;
+import info.Mr.Yang.mongodb.model.ProductDetail.SkuDetail.SkuList;
+import info.Mr.Yang.mongodb.model.ProductDetail.SkuDetail.TreeV;
 import info.Mr.Yang.mongodb.service.CartService;
 import info.Mr.Yang.mongodb.service.ProductDetailService.SkuDetailService.SkuListService;
 import info.Mr.Yang.mongodb.service.ProductService;
@@ -48,6 +51,9 @@ public class CartServiceImpl implements CartService {
     @Autowired
     public ProductService productService;
 
+    @Autowired
+    public TreeVDao treeVDao;
+
     @Override
     public List<Cart> findAll() {
         return dao.findAll();
@@ -73,6 +79,21 @@ public class CartServiceImpl implements CartService {
             Product product = productService.findById(cart.getProduct_id());
             cart.setTitle(product.getTitle());
             cart.setImageURL(product.getImageURL());
+            StringBuffer desc = new StringBuffer();
+            SkuList skuList = skuListService.findById(cart.getSkuList_id());
+            if (skuList.getS1() != null && skuList.getS1().length() != 0) {
+                TreeV treeV = treeVDao.findById(skuList.getS1()).orElse(null);
+                desc.append(treeV.getName() + ",");
+            }
+            if (skuList.getS2() != null && skuList.getS2().length() != 0) {
+                TreeV treeV = treeVDao.findById(skuList.getS2()).orElse(null);
+                desc.append(treeV.getName());
+            }
+            if (skuList.getS3() != null && skuList.getS3().length() != 0) {
+                TreeV treeV = treeVDao.findById(skuList.getS3()).orElse(null);
+                desc.append("," + treeV.getName());
+            }
+            cart.setDesc(desc.toString());
             if (exist_id.isEmpty()) {
                 cart.setId(null);
                 cart.setUser_id(user_id);

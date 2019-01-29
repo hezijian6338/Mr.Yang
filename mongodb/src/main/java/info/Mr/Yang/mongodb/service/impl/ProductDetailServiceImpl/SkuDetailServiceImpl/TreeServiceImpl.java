@@ -1,7 +1,9 @@
 package info.Mr.Yang.mongodb.service.impl.ProductDetailServiceImpl.SkuDetailServiceImpl;
 
 import info.Mr.Yang.mongodb.dao.ProductDetailDao.SkuDetail.TreeDao;
+import info.Mr.Yang.mongodb.dao.ProductDetailDao.SkuDetail.TreeVDao;
 import info.Mr.Yang.mongodb.model.ProductDetail.SkuDetail.Tree;
+import info.Mr.Yang.mongodb.model.ProductDetail.SkuDetail.TreeV;
 import info.Mr.Yang.mongodb.service.ProductDetailService.SkuDetailService.TreeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -36,6 +38,9 @@ public class TreeServiceImpl implements TreeService {
     }
 
     @Autowired
+    public TreeVDao treeVDao;
+
+    @Autowired
     public MongoTemplate mongoTemplate;
 
     @Override
@@ -60,6 +65,9 @@ public class TreeServiceImpl implements TreeService {
 
     @Override
     public Tree add(Tree tree) {
+        for (TreeV treeV : tree.getV()) {
+            treeVDao.save(treeV);
+        }
         return dao.save(tree);
     }
 
