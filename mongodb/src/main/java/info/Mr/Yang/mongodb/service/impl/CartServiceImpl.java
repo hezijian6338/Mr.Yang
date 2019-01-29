@@ -91,6 +91,7 @@ public class CartServiceImpl implements CartService {
                 map.put("quantity", quantity);
                 map.put("title", cart.getTitle());
                 map.put("imageURL", cart.getImageURL());
+                map.put("desc", cart.getDesc());
                 dao.update(exist_id, map);
                 carts_noId.add(exist_cart);
             }

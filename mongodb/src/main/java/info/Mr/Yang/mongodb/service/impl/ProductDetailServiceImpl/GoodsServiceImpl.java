@@ -68,7 +68,9 @@ public class GoodsServiceImpl implements GoodsService {
         goodss.setSku(skuService.fillById(goods.getSku_id()));
         goodss.setGoods(goods);
         goodss.setId(goods.getId());
-        goodsInfo.setId(goodss.getSku().getList().get(0).getId());
+
+//        存放product的id值
+        goodsInfo.setId(goods.getProduct_id());
         goodsInfo.setPicture(goods.getThumb().get(0));
         goodsInfo.setTitle(goods.getSubtitle());
         goodss.setGoodsInfo(goodsInfo);
