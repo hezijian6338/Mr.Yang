@@ -135,6 +135,19 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
+    public void updatePrice(String id, String skuList_id, Map<String, Object> updateFieldMap) {
+        Set<String> set = updateFieldMap.keySet();
+        for (String key : set) {
+            if (key.equals("quantity")) {
+                int quantity = (int) updateFieldMap.get(key);
+                String price = Integer.toString(skuListService.findById(skuList_id).getPrice() * quantity);
+                updateFieldMap.put("price", price);
+            }
+        }
+        dao.update(id, updateFieldMap);
+    }
+
+    @Override
     public String checkExist(String user_id, String product_id, String skuList_id) {
 
         Cart cart = mongoTemplate.findOne(Query.query(new Criteria().andOperator(

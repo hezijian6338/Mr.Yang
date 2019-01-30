@@ -66,4 +66,6 @@ public interface CartService {
 
     String checkExist(String user_id, String product_id, String skuList_id);
 
+    void updatePrice(String id, String skuList_id, Map<String, Object> updateFieldMap);
+
 }

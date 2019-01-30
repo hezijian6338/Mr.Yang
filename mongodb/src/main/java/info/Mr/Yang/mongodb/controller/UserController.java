@@ -132,4 +132,11 @@ public class UserController {
         return new Result(service.getCarts(id));
     }
 
+    @ApiOperation(value = "根据用户的id来更新购物车列表")
+    @RequestMapping(value = "{id}/carts", method = RequestMethod.PATCH)
+    public Result updateCarts(@PathVariable("id") String id, @RequestBody Map map) {
+
+        return new Result(service.getCarts(id));
+    }
+
 }

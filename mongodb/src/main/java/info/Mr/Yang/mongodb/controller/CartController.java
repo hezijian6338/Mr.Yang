@@ -79,4 +79,11 @@ public class CartController {
         return new Result(CodeConst.SUCCESS.getResultCode(), CodeConst.SUCCESS.getMessage());
     }
 
+    @ApiOperation(value = "根据id和商品详情更新数量和商品价格")
+    @RequestMapping(value = "{id}/skuList/{sl_id}", method = RequestMethod.PATCH)
+    public Result updatePrice(@PathVariable("id") String id, @PathVariable String sl_id, @RequestBody Map updateFieldMap) {
+        service.updatePrice(id, sl_id, updateFieldMap);
+        return new Result(CodeConst.SUCCESS.getResultCode(), CodeConst.SUCCESS.getMessage());
+    }
+
 }
