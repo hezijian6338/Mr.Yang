@@ -84,11 +84,11 @@ public class CartServiceImpl implements CartService {
             if (skuList.getS1() != null && skuList.getS1().length() != 0) {
                 TreeV treeV = treeVDao.findById(skuList.getS1()).orElse(null);
                 cart.setImageURL(treeV.getImgUrl());
-                desc.append(treeV.getName() + ",");
+                desc.append(treeV.getName());
             }
             if (skuList.getS2() != null && skuList.getS2().length() != 0) {
                 TreeV treeV = treeVDao.findById(skuList.getS2()).orElse(null);
-                desc.append(treeV.getName());
+                desc.append("," + treeV.getName());
             }
             if (skuList.getS3() != null && skuList.getS3().length() != 0) {
                 TreeV treeV = treeVDao.findById(skuList.getS3()).orElse(null);
