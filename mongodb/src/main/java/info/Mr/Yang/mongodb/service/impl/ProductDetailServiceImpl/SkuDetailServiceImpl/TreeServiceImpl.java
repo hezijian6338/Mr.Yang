@@ -9,10 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.sql.Array;
+import java.util.*;
 
 /**
  * 把今天最好的表现当作明天最新的起点．．～
@@ -47,7 +45,7 @@ public class TreeServiceImpl implements TreeService {
     public List<Tree> findAll() {
         return dao.findAll();
     }
-    
+
     @Override
     public Tree findById(String id) {
         Optional<Tree> optionalProduct = dao.findById(id);
@@ -83,5 +81,18 @@ public class TreeServiceImpl implements TreeService {
     @Override
     public void update(String id, Map<String, Object> updateFieldMap) {
         dao.update(id, updateFieldMap);
+        Set<String> set = updateFieldMap.keySet();
+        for (String key : set) {
+            if (key.equals("v")) {
+                Tree tree = this.findById(id);
+                List<TreeV> list = tree.getV();
+                for (TreeV treeV : list) {
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("name", treeV.getName());
+                    map.put("imgUrl", treeV.getImgUrl());
+                    treeVDao.update(treeV.getId(), map);
+                }
+            }
+        }
     }
 }
