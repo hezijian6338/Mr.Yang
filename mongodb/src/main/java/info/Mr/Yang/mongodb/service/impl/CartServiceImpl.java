@@ -78,11 +78,12 @@ public class CartServiceImpl implements CartService {
             String exist_id = this.checkExist(user_id, cart.getProduct_id(), cart.getSkuList_id());
             Product product = productService.findById(cart.getProduct_id());
             cart.setTitle(product.getTitle());
-            cart.setImageURL(product.getImageURL());
+            // cart.setImageURL(product.getImageURL());
             StringBuffer desc = new StringBuffer();
             SkuList skuList = skuListService.findById(cart.getSkuList_id());
             if (skuList.getS1() != null && skuList.getS1().length() != 0) {
                 TreeV treeV = treeVDao.findById(skuList.getS1()).orElse(null);
+                cart.setImageURL(treeV.getImgUrl());
                 desc.append(treeV.getName() + ",");
             }
             if (skuList.getS2() != null && skuList.getS2().length() != 0) {
