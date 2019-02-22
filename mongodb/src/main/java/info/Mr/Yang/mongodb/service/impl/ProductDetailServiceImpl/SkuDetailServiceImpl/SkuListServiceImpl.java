@@ -60,6 +60,7 @@ public class SkuListServiceImpl implements SkuListService {
 
     @Override
     public SkuList add(SkuList skuList) {
+        skuList.setId(null);
         return dao.save(skuList);
     }
 

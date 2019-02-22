@@ -63,9 +63,13 @@ public class TreeServiceImpl implements TreeService {
 
     @Override
     public Tree add(Tree tree) {
+        List<TreeV> treevs = new ArrayList<>();
         for (TreeV treeV : tree.getV()) {
-            treeVDao.save(treeV);
+            treeV.setId(null);
+            treevs.add(treeVDao.save(treeV));
         }
+        tree.setId(null);
+        tree.setV(treevs);
         return dao.save(tree);
     }
 

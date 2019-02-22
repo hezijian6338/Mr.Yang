@@ -84,6 +84,7 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Override
     public Goods add(Goods goods) {
+        goods.setId(null);
         return dao.save(goods);
     }
 

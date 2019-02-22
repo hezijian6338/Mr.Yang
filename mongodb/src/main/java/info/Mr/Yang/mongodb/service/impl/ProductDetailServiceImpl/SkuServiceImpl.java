@@ -80,6 +80,7 @@ public class SkuServiceImpl implements SkuService {
 
     @Override
     public Sku add(Sku sku) {
+        sku.setId(null);
         return dao.save(sku);
     }
 
