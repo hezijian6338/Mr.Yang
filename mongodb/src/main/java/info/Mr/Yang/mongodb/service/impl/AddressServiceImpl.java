@@ -1,7 +1,9 @@
 package info.Mr.Yang.mongodb.service.impl;
 
 import info.Mr.Yang.mongodb.dao.AddressDao;
+import info.Mr.Yang.mongodb.dao.UserDao;
 import info.Mr.Yang.mongodb.model.Address;
+import info.Mr.Yang.mongodb.model.User;
 import info.Mr.Yang.mongodb.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,6 +35,9 @@ public class AddressServiceImpl implements AddressService {
         this.dao = dao;
     }
 
+    @Autowired
+    private UserDao userDao;
+
     @Override
     public List<Address> findAll() {
         return dao.findAll();
@@ -57,6 +62,14 @@ public class AddressServiceImpl implements AddressService {
     @Override
     public Address add(Address address) {
         return dao.save(address);
+    }
+
+    @Override
+    public Address _add(User user, Address address) {
+        Address _address = dao.save(address);
+        user.getAddressList_id().add(address.getId());
+        userDao.update(user.getId(), user);
+        return _address;
     }
 
     @Override

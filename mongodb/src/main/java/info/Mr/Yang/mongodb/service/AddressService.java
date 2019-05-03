@@ -1,6 +1,7 @@
 package info.Mr.Yang.mongodb.service;
 
 import info.Mr.Yang.mongodb.model.Address;
+import info.Mr.Yang.mongodb.model.User;
 
 import java.util.List;
 
@@ -51,6 +52,8 @@ public interface AddressService {
      * @return
      */
     Address add(Address address);
+
+    Address _add(User user, Address address);
 
     /**
      * 删除

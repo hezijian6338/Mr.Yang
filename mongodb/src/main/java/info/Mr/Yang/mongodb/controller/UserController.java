@@ -78,6 +78,14 @@ public class UserController {
         return new Result<>(addresses);
     }
 
+    @ApiOperation(value = "根据用户id保存收货地址")
+    @RequestMapping(value = "{id}/addresses", method = RequestMethod.POST)
+    public Result getUserAddresses(@ApiParam(required = true, name = "id", value = "填写用户的id")@PathVariable("id") String id, @RequestBody Address address) {
+        User user = service.findById(id);
+        Address _address = addressService._add(user, address);
+        return new Result<>(_address);
+    }
+
     @ApiOperation(value = "根据用户id获取优惠券")
     @RequestMapping(value = "{id}/coupons", method = RequestMethod.GET)
     public Result getUserCoupons(@ApiParam(required = true, name = "id", value = "填写用户的id")@PathVariable("id") String id) {
